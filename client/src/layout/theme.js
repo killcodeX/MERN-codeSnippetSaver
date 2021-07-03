@@ -58,11 +58,10 @@ export const MainLinked = styled.div`
 
 export const CardWrapper = styled.div`
     background:#25262C;
-    height:30px;
-    weight:30px;
     color:white;
     padding:2px;
     font-family:poppins;
+    margin-top:10px;
 `;
 
 // export const CardWrapper = styled.div`
