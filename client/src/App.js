@@ -1,12 +1,18 @@
 import './App.css';
+import { ThemeProvider } from "styled-components";
+import { Header, SideMenu } from './layout';
+import { lightTheme, darkTheme } from "./layout/theme";
+import {AllSnippets} from './components'
 
 function App() {
+  const blackMode = true;
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Hello World</h1>
-      </header>
-    </div>
+    <ThemeProvider theme={blackMode === true ? darkTheme : lightTheme}>
+      <Header/>
+      <SideMenu>
+      </SideMenu>
+      <AllSnippets/>
+    </ThemeProvider>
   );
 }
 

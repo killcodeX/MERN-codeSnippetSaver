@@ -1,0 +1,79 @@
+import styled from 'styled-components';
+
+export const lightTheme = {
+    body: '#E9F1FC',
+    text: '#363537',
+    toggleBorder: '#FFF',
+    background: '#fff',
+    boxShadow: '0px 8px 20px rgba(0,0,0,0.06)'
+}
+export const darkTheme = {
+    body: '#1A1C22',
+    text: '#FAFAFA',
+    toggleBorder: '#6B8096',
+    background: '#292929',
+    boxShadow:''
+}
+
+// components styles
+
+//NavLinked
+ export const NavLinked = styled.nav`
+    background: #0F0F0F;
+    min-height:20px;
+    padding:25px 40px;
+    color:white;
+    font-family: 'Lobster', cursive;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow:${props => props.theme.boxShadow};
+`;
+
+// side menu
+export const SideLinked = styled.div`
+    background: #191B1F;
+    position:fixed;
+    z-index: 1;
+    left: 0;
+    width:200px;
+    height:100%;
+    padding:15px;
+    color:white;
+    font-family:poppins;
+    overflow-x: hidden;
+    border-right:1px solid #2A2C31;
+`;
+
+// main content
+
+export const MainLinked = styled.div`
+    margin-left:200px;
+    background:#1A1C22;
+    color:white;
+    height:100%;
+    padding:30px;
+`;
+
+export const CardWrapper = styled.div`
+    background:#25262C;
+    height:30px;
+    weight:30px;
+    color:white;
+    padding:2px;
+    font-family:poppins;
+`;
+
+// export const CardWrapper = styled.div`
+//     background: ${props => props.theme.background};
+//     color:${props => props.theme.text};
+//     box-shadow:${props => props.theme.boxShadow};
+//     padding:20px;
+//     display: flex;
+//     -ms-flex-direction: column;
+//     flex-direction: column;
+//     background-clip: border-box;
+//     border: 1px solid rgba(0,0,0,.125);
+//     border-radius: .25rem;
+// `;

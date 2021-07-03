@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+/* toggler */
+.react-toggle-track {
+    width: 56px;
+  }
+  
+  .react-toggle--checked .react-toggle-track {
+    background-color: #efefef !important;
+  }
+  
+  .react-toggle-track-check {
+    top: 9px !important;
+    font-size: 14px;
+  }
+  
+  .react-toggle-track-x {
+    top: 9px !important;
+    font-size: 15px;
+    right: 16px !important;
+  }
