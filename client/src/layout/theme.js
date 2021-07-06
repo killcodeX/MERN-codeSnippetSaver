@@ -64,11 +64,12 @@ export const MainLinked = styled.div`
 export const CardWrapper = styled.div`
     background:#25262C;
     color:white;
-    padding:10px;
-    height:150px;
+    padding:15px;
+    min-height:150px;
     font-family:poppins;
-    margin-top:10px;
+    margin-top:15px;
     width:100%;
+    border-radius:10px;
 `;
 
 // export const CardWrapper = styled.div`

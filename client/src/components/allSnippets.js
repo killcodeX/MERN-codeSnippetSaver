@@ -2,9 +2,12 @@ import React,{useState} from "react";
 import { MainLinked, CardWrapper } from "../layout/theme";
 import { Row, Col, Container } from "react-bootstrap";
 import AddNew from "./addNew";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function AllSnippets() {
-  let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const data = useSelector(state => state.Products.Codes);
+  let arr = [1,23,4,5]
+  console.log(data)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -21,11 +24,16 @@ export default function AllSnippets() {
             </CardWrapper>
           </Col>
           <AddNew show={show} handleClose={handleClose}/>
-          {arr.map((item, index) => {
+          {data.map((item) => {
             return (
-              <Col xs={4} key={index}>
+              <Col xs={4} key={item.id}>
                 <CardWrapper>
-                  <p>{item}</p>
+                  <p className='title'>{item.title}</p>
+                  <p className='code-desc'>{item.desc}</p>
+                  <p className='code-language'>{item.language}</p>
+                  <div className='displayBtn'>
+                    
+                  </div>
                 </CardWrapper>
               </Col>
             );

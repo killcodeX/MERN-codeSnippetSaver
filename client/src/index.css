@@ -52,3 +52,9 @@ h4.side-menu {
   padding-left:10px;
   border-bottom: 1px solid #2A2C31;
 }
+
+.code-language{
+  color: #25262C;
+  background: #efefef;
+  padding-left: 10px;
+}

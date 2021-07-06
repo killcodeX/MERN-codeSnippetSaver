@@ -9,7 +9,41 @@
 //   } from "../actions/actionConstant";
   
   const initialState = {
-    Products: [],
+    Codes: [{
+        id:1,
+        title:'A',
+        desc:'bla bla bla bla bla bla',
+        language:'CSS',
+        code:'Sexy'
+    },
+    {
+        id:2,
+        title:'B',
+        desc:'bla bla bla bla bla bla',
+        language:'Java',
+        code:'Sexy'
+    },
+    {
+        id:3,
+        title:'C',
+        desc:'bla bla bla bla bla bla',
+        language:'Python',
+        code:'Sexy'
+    },
+    {
+        id:4,
+        title:'D',
+        desc:'bla bla bla bla bla bla',
+        language:'C#',
+        code:'Sexy'
+    },
+    {
+        id:5,
+        title:'E',
+        desc:'bla bla bla bla bla bla',
+        language:'JavaScript',
+        code:'Sexy'
+    }],
     Product: false,
     TotalProduct: [],
     buyProduct: [],
