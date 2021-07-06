@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { CardWrapper } from "../layout/theme";
 import { useFormik } from "formik";
 import { Modal, Form, Button, Col } from "react-bootstrap";
 
-export default function AddNew() {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+export default function AddNew({show, handleClose}) {
 
   const validate = (values) => {
+    console.log(values,'jj')
 
     const errors = {};
 
@@ -40,21 +38,15 @@ export default function AddNew() {
     },
     validate: validate,
     onSubmit: (values) => {
+      console.log('clik')
       handleClose()
       alert(JSON.stringify(values, null, 2));
     },
   });
 
+  //console.log(formik)
+
   return (
-    <>
-      <Col xs={4} style={{ cursor: "pointer" }} onClick={handleShow}>
-        <CardWrapper className="d-flex flex-column justify-content-center align-items-center">
-          <img
-            src={process.env.PUBLIC_URL + "/white-add.png"}
-            alt="add new snippet"
-          />
-        </CardWrapper>
-      </Col>
       <Modal centered show={show} onHide={handleClose}>
         <Modal.Header>
           <Modal.Title>Add New Snippet</Modal.Title>
@@ -124,6 +116,5 @@ export default function AddNew() {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
   );
 }
