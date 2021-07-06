@@ -65,7 +65,7 @@ export const CardWrapper = styled.div`
     background:#25262C;
     color:white;
     padding:15px;
-    min-height:190px;
+    min-height:250px;
     font-family:poppins;
     margin-top:15px;
     width:100%;

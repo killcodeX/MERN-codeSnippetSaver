@@ -1,13 +1,13 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { MainLinked, CardWrapper } from "../layout/theme";
 import { Row, Col, Container } from "react-bootstrap";
 import AddNew from "./addNew";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function AllSnippets() {
-  const data = useSelector(state => state.Products.Codes);
-  let arr = [1,23,4,5]
-  console.log(data)
+  const data = useSelector((state) => state.Products.Codes);
+  let arr = [1, 23, 4, 5];
+  console.log(data);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -23,15 +23,15 @@ export default function AllSnippets() {
               />
             </CardWrapper>
           </Col>
-          <AddNew show={show} handleClose={handleClose}/>
+          <AddNew show={show} handleClose={handleClose} />
           {data.map((item) => {
             return (
               <Col xs={4} key={item.id}>
                 <CardWrapper>
-                  <p className='code-title'>{item.title}</p>
-                  <p className='code-desc'>{item.desc}</p>
-                  <p className='code-language'>{item.language}</p>
-                  <div className='displayBtn'>
+                  <p className="code-title">{item.title}</p>
+                  <p className="code-desc">{item.desc.slice(0,75)+'...'}</p>
+                  <p className="code-language">{item.language}</p>
+                  <div className="displayBtn">
                     <i className="fas fa-code"></i>
                     <i className="far fa-edit"></i>
                     <i className="far fa-trash-alt"></i>

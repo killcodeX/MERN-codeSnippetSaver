@@ -60,16 +60,22 @@ h4.side-menu {
 
 .code-desc {
   font-size: 0.9rem;
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap;
+  white-space: nowrap; */
 }
 
 .code-language {
   color: #25262c;
-  background: #efefef;
-  padding-left: 10px;
+  background:  #efefef; 
+  padding: 2px 7px;
+  display: inline-block;
+  border-radius: 5px;
 }
+
+/* #efefef */
+
+/* #25262c */
 
 .displayBtn {
   display: flex;
@@ -77,16 +83,19 @@ h4.side-menu {
   cursor: pointer;
 }
 
-.fa-code{
+.fa-code {
+  font-size: 1.1rem;
   color: #ccff00;
 }
 
 .fa-edit {
+  font-size: 1.1rem;
   margin-left: 15px;
   margin-right: 15px;
   color: #3d50fa;
 }
 
 .fa-trash-alt {
+  font-size: 1.1rem;
   color: #f85125;
 }
