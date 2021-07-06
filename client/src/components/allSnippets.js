@@ -28,11 +28,13 @@ export default function AllSnippets() {
             return (
               <Col xs={4} key={item.id}>
                 <CardWrapper>
-                  <p className='title'>{item.title}</p>
+                  <p className='code-title'>{item.title}</p>
                   <p className='code-desc'>{item.desc}</p>
                   <p className='code-language'>{item.language}</p>
                   <div className='displayBtn'>
-                    
+                    <i className="fas fa-code"></i>
+                    <i className="far fa-edit"></i>
+                    <i className="far fa-trash-alt"></i>
                   </div>
                 </CardWrapper>
               </Col>

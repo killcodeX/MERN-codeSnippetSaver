@@ -28,33 +28,65 @@
 }
 
 .modal-content {
-  background: #25262C !important;
+  background: #25262c !important;
   color: white !important;
 }
 
 p.side-menu-list {
-  font-size:1rem;
-  padding-left:10px;
+  font-size: 1rem;
+  padding-left: 10px;
   cursor: pointer;
   transition: all 0.3s;
 }
 
-p.side-menu-list:hover{
+p.side-menu-list:hover {
   background: white;
-  color: #25262C;
+  color: #25262c;
 }
 
 h4.side-menu {
-  font-size:1.4rem;
-  font-weight:700;
-  padding-top:20px;
-  padding-bottom:10px;
-  padding-left:10px;
-  border-bottom: 1px solid #2A2C31;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border-bottom: 1px solid #2a2c31;
 }
 
-.code-language{
-  color: #25262C;
+.code-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.code-desc {
+  font-size: 0.9rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.code-language {
+  color: #25262c;
   background: #efefef;
   padding-left: 10px;
+}
+
+.displayBtn {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.fa-code{
+  color: #ccff00;
+}
+
+.fa-edit {
+  margin-left: 15px;
+  margin-right: 15px;
+  color: #3d50fa;
+}
+
+.fa-trash-alt {
+  color: #f85125;
 }

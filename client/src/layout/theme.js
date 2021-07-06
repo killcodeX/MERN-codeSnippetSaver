@@ -57,7 +57,7 @@ export const MainLinked = styled.div`
     padding: 90px 0 50px 200px;
     background:#1A1C22;
     color:white;
-    height:100%;
+    height:100vh;
     overflow:auto;
 `;
 
@@ -65,7 +65,7 @@ export const CardWrapper = styled.div`
     background:#25262C;
     color:white;
     padding:15px;
-    min-height:150px;
+    min-height:190px;
     font-family:poppins;
     margin-top:15px;
     width:100%;
