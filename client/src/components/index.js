@@ -1,4 +1,6 @@
-import AllSnippets from './allSnippets'
+import AllSnippets from './allSnippets';
+import AddNew from './addNew'
+import CodeModal from './codeModal';
 
 
-export {AllSnippets};
+export {AllSnippets, AddNew, CodeModal};

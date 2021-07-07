@@ -1,38 +1,33 @@
 import React, { useState } from "react";
 import { MainLinked, CardWrapper } from "../layout/theme";
 import { Row, Col, Container } from "react-bootstrap";
-import AddNew from "./addNew";
+import { AddNew, CodeModal } from ".";
 import { useSelector } from "react-redux";
 
 export default function AllSnippets() {
   const data = useSelector((state) => state.Products.Codes);
-  let arr = [1, 23, 4, 5];
   console.log(data);
   const [show, setShow] = useState(false);
+  const [selectData, setSelectData] = useState({})
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShowModal = (id) => {
+    setSelectData(data.filter(item => item.id == id)[0])
+    setShow(true)
+  };
   return (
     <MainLinked>
       <Container>
         <Row>
-          <Col xs={4} style={{ cursor: "pointer" }} onClick={handleShow}>
-            <CardWrapper className="d-flex flex-column justify-content-center align-items-center">
-              <img
-                src={process.env.PUBLIC_URL + "/white-add.png"}
-                alt="add new snippet"
-              />
-            </CardWrapper>
-          </Col>
-          <AddNew show={show} handleClose={handleClose} />
+          <AddNew/>
           {data.map((item) => {
             return (
               <Col xs={4} key={item.id}>
                 <CardWrapper>
                   <p className="code-title">{item.title}</p>
-                  <p className="code-desc">{item.desc.slice(0,75)+'...'}</p>
+                  <p className="code-desc">{item.desc.slice(0, 75) + "..."}</p>
                   <p className="code-language">{item.language}</p>
                   <div className="displayBtn">
-                    <i className="fas fa-code"></i>
+                    <div onClick={() => handleShowModal(item.id)}><i className="fas fa-code"></i></div>
                     <i className="far fa-edit"></i>
                     <i className="far fa-trash-alt"></i>
                   </div>
@@ -42,6 +37,7 @@ export default function AllSnippets() {
           })}
         </Row>
       </Container>
+      <CodeModal data={selectData} show={show} handleClose={handleClose} />
     </MainLinked>
   );
 }
