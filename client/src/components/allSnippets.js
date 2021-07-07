@@ -1,14 +1,23 @@
 import React, { useState } from "react";
 import { MainLinked, CardWrapper } from "../layout/theme";
 import { Row, Col, Container } from "react-bootstrap";
-import { AddNew, CodeModal } from ".";
+import { AddNew, CodeModal, EditModal } from ".";
 import { useSelector } from "react-redux";
 
 export default function AllSnippets() {
   const data = useSelector((state) => state.Products.Codes);
-  console.log(data);
   const [show, setShow] = useState(false);
+  const [editShow, setEditShow] = useState(false)
   const [selectData, setSelectData] = useState({})
+
+  // for Edit code modal
+  const handleEditModalClose = () => setEditShow(false);
+  const handleEditShowModal = (id) => {
+    setSelectData(data.filter(item => item.id == id)[0])
+    setEditShow(true)
+  };
+
+  // for code modal
   const handleClose = () => setShow(false);
   const handleShowModal = (id) => {
     setSelectData(data.filter(item => item.id == id)[0])
@@ -28,7 +37,7 @@ export default function AllSnippets() {
                   <p className="code-language">{item.language}</p>
                   <div className="displayBtn">
                     <div onClick={() => handleShowModal(item.id)}><i className="fas fa-code"></i></div>
-                    <i className="far fa-edit"></i>
+                    <div onClick={() => handleEditShowModal(item.id)}><i className="far fa-edit"></i></div>
                     <i className="far fa-trash-alt"></i>
                   </div>
                 </CardWrapper>
@@ -38,6 +47,7 @@ export default function AllSnippets() {
         </Row>
       </Container>
       <CodeModal data={selectData} show={show} handleClose={handleClose} />
+      <EditModal data={selectData} show={editShow} handleClose={handleEditModalClose} />
     </MainLinked>
   );
 }

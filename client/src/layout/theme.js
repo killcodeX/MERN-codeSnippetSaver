@@ -56,7 +56,7 @@ export const SideLinked = styled.div`
   position: absolute;
   top: 60px;
   left: 0;
-  width: 200px;
+  //width: 200px;
   height: 100%;
   padding: 15px;
   color: white;
@@ -71,8 +71,8 @@ export const MainLinked = styled.div`
   padding: 90px 0 50px 200px;
   background: #1a1c22;
   color: white;
-  height: 100vh;
-  overflow: auto;
+  max-height: 100vh;
+  overflow-y: scroll;
 `;
 
 export const CardWrapper = styled.div`

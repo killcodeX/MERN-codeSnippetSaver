@@ -1,12 +1,12 @@
-// import {
-//     GetProducts,
-//     GetSingleProducts,
-//     BuyProduct,
-//     CartProduct,
-//     RemovefromCart,
-//     TotalAmount,
-//     TotalproductToBuy,
-//   } from "../actions/actionConstant";
+import {
+  GetCode,
+  AddSingleCode,
+  FilterLanguage,
+  FilterSearch,
+  RemoveCode,
+  TotalAmount,
+  TotalproductToBuy,
+} from "../actions/actionConstant";
 
 const initialState = {
   Codes: [
@@ -49,7 +49,8 @@ const initialState = {
     },
     {
       id: 5,
-      title: "Frontend Performance Optimization with Code Splitting using React.Lazy & Suspense 🔥",
+      title:
+        "Frontend Performance Optimization with Code Splitting using React.Lazy & Suspense 🔥",
       desc: "Learn how developers successfully use marketing to spread the word about their projects, blogs, and more, often without trying to sell anything.",
       language: "JavaScript",
       code: `import React from "react";
@@ -89,7 +90,7 @@ const initialState = {
       `,
     },
   ],
-  theme:'dark',
+  theme: "dark",
   TotalProduct: [],
   buyProduct: [],
   TotalAmount: null,
@@ -111,11 +112,14 @@ const ProductReducer = (state = initialState, action) => {
     //       Product: action.payload,
     //     };
 
-    //   case BuyProduct:
-    //     return {
-    //       ...state,
-    //       buyProduct: [action.payload, ...state.buyProduct],
-    //     };
+    case FilterLanguage:
+      console.log('form reducers', action)
+      const filterCode = state.Codes.filter(item => item.language.toLowerCase() == action.payload.toLowerCase())
+      console.log('filter by lang', filterCode)
+      return {
+        ...state,
+        TotalProduct: filterCode,
+      };
 
     //   case CartProduct:
     //     const totalItemBuy = state.Products.filter((data1) =>

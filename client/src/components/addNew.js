@@ -11,8 +11,6 @@ export default function AddNew() {
 
 
   const validate = (values) => {
-    console.log(values, "jj");
-
     const errors = {};
 
     if (!values.title) {

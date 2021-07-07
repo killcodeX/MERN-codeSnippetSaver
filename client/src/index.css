@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-.user-Login{
+.user-Login {
   font-size: 30px;
 }
 
@@ -27,8 +27,6 @@
   background-color: white !important;
 }
 
-
-
 .modal-content {
   background: #25262c !important;
   color: white !important;
@@ -42,6 +40,11 @@ p.side-menu-list {
 }
 
 p.side-menu-list:hover {
+  background: white;
+  color: #25262c;
+}
+
+.active {
   background: white;
   color: #25262c;
 }
@@ -69,7 +72,7 @@ h4.side-menu {
 
 .code-language {
   color: #25262c;
-  background:  #efefef; 
+  background: #efefef;
   padding: 2px 7px;
   display: inline-block;
   border-radius: 5px;
@@ -102,7 +105,6 @@ h4.side-menu {
   color: #f85125;
 }
 
-
 /* for scroll bar */
 
 /* width */
@@ -112,15 +114,15 @@ h4.side-menu {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
