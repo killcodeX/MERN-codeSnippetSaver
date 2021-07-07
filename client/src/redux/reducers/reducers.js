@@ -89,7 +89,7 @@ const initialState = {
       `,
     },
   ],
-  Product: false,
+  theme:'dark',
   TotalProduct: [],
   buyProduct: [],
   TotalAmount: null,

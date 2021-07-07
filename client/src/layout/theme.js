@@ -23,17 +23,31 @@ export const NavLinked = styled.nav`
   height: 80px;
   padding: 20px 40px;
   color: white;
-  font-family: "Lobster", cursive;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  box-shadow: ${(props) => props.theme.boxShadow};
+  // box-shadow: ${(props) => props.theme.boxShadow};
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1;
+`;
+
+// header searchbar
+
+export const HeaderSearch = styled.input`
+  padding:10px;
+  background: #25262c;
+  width: 480px;
+  border: none;
+  border-radius: 10px;
+  height: 35px;
+  color:white;
+  &:focus{
+    outline:none;
+  }
 `;
 
 // side menu
@@ -81,8 +95,8 @@ export const Tag = styled.div`
 `;
 
 export const CodeSnippetModal = styled.div`
-  max-height:400px;
-  overflow-y:scroll;
+  max-height: 400px;
+  overflow-y: scroll;
 `;
 
 // export const CardWrapper = styled.div`

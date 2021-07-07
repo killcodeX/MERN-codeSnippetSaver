@@ -25,6 +25,7 @@ export default function CodeModal({
             showLineNumbers={true}
             language={data.language}
             style={atomOneDark}
+            //wrapLongLines={true}
           >
             {data.code}
           </SyntaxHighlighter>

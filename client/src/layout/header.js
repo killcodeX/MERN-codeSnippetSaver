@@ -1,23 +1,28 @@
-import React,{useState} from 'react'
-import styled from 'styled-components';
-import {NavLinked} from './theme';
+import React, { useState } from "react";
+import { NavLinked, HeaderSearch } from "./theme";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
 
 export default function Header() {
+  const [inputData, setInputData] = useState("");
+  const [isDark, setIsDark] = useState(false);
 
-    const [isDark, setIsDark] = useState(false)
-
-    return (
-        <NavLinked>
-            <h2>Code Snippet Saver</h2>
-            <Toggle
-                className="DarkToggle"
-                checked={isDark}
-                onChange={(event) => setIsDark(event.target.checked)}
-                icons={{ checked: "🔆", unchecked: "🌙" }}
-                aria-label="Dark mode"
-            />
-        </NavLinked>
-    )
+  return (
+    <NavLinked>
+      <h2 style={{fontFamily: "Lobster"}}>Code Snippet Saver</h2>
+      <HeaderSearch
+        placeholder="Search title"
+        value={inputData}
+        onChange={(e) => setInputData(e.target.value)}
+      />
+      <Toggle
+        className="DarkToggle"
+        checked={isDark}
+        onChange={(event) => setIsDark(event.target.checked)}
+        icons={{ checked: "🔆", unchecked: "🌙" }}
+        aria-label="Dark mode"
+      />
+      <div className='user-Login'><i className="far fa-user-circle"></i></div>
+    </NavLinked>
+  );
 }

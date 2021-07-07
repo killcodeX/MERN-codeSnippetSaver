@@ -7,25 +7,27 @@
   box-sizing: border-box;
 }
 
-/* toggler */
-.react-toggle-track {
-  width: 56px;
+.user-Login{
+  font-size: 30px;
 }
 
-.react-toggle--checked .react-toggle-track {
-  background-color: #efefef !important;
+/* toggler */
+
+.react-toggle-track-x {
+  width: 15px !important;
+  top: 50% !important;
 }
 
 .react-toggle-track-check {
-  top: 9px !important;
-  font-size: 14px;
+  height: 12px !important;
+  top: 50%;
 }
 
-.react-toggle-track-x {
-  top: 9px !important;
-  font-size: 15px;
-  right: 16px !important;
+.react-toggle--checked .react-toggle-track {
+  background-color: white !important;
 }
+
+
 
 .modal-content {
   background: #25262c !important;
