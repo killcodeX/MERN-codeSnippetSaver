@@ -57,7 +57,7 @@ export const SideLinked = styled.div`
   top: 60px;
   left: 0;
   //width: 200px;
-  height: 100%;
+  height: 87.2vh;
   padding: 15px;
   color: white;
   font-family: poppins;

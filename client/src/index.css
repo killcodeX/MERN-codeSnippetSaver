@@ -58,6 +58,18 @@ h4.side-menu {
   border-bottom: 1px solid #2a2c31;
 }
 
+/* not availabel */
+.data-not-avail{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-top: 100px;
+}
+
+.data-not-avail img{
+  width:60%;
+}
+
 .code-title {
   font-size: 1.2rem;
   font-weight: 600;

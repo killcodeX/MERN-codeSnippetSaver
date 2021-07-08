@@ -17,7 +17,7 @@ import { getCodeApi } from "../../api/getCodeApi";
 // actions
 export const getCodes = () => async (dispatch) => {
   const result = await getCodeApi();
-  console.log('called')
+  console.log('called', result)
   dispatch({
     type: GetCode,
     payload: result,

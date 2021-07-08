@@ -2,18 +2,19 @@ import React, { useState, useEffect } from "react";
 import { MainLinked, CardWrapper } from "../layout/theme";
 import { Row, Col, Container } from "react-bootstrap";
 import { AddNew, CodeModal, EditModal } from ".";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getCodes } from '../redux/actions/actions';
 
 export default function AllSnippets() {
-  const data = useSelector((state) => state.Codes.Codes);
+  const dispatch = useDispatch();
+  const data =[] //useSelector((state) => state.Codes.Codes);
   const [show, setShow] = useState(false);
   const [editShow, setEditShow] = useState(false)
   const [selectData, setSelectData] = useState({})
 
   useEffect(() => {
-    getCodes()
-  }, [])
+    dispatch(getCodes())
+  }, [dispatch])
 
   // for Edit code modal
   const handleEditModalClose = () => setEditShow(false);
@@ -28,6 +29,18 @@ export default function AllSnippets() {
     setSelectData(data.filter(item => item.id == id)[0])
     setShow(true)
   };
+
+  if(data.length == 0){
+    return(
+      <MainLinked>
+        <Container>
+            <div className='data-not-avail'>
+                <img src={process.env.PUBLIC_URL + "notFound.png"} alt='data not availabel' />
+            </div>
+        </Container>
+      </MainLinked>
+    )
+  }
   return (
     <MainLinked>
       <Container>
