@@ -106,16 +106,18 @@ const ProductReducer = (state = initialState, action) => {
     //       Products: action.payload,
     //     };
 
-    //   case GetSingleProducts:
-    //     return {
-    //       ...state,
-    //       Product: action.payload,
-    //     };
+      case AddSingleCode:
+        console.log(action)
+        console.log(state)
+        return {
+          ...state,
+          Codes: [action.payload,...state.Codes],
+        };
 
     case FilterLanguage:
-      console.log('form reducers', action)
+      //console.log('form reducers', action)
       const filterCode = state.Codes.filter(item => item.language.toLowerCase() == action.payload.toLowerCase())
-      console.log('filter by lang', filterCode)
+      //console.log('filter by lang', filterCode)
       return {
         ...state,
         TotalProduct: filterCode,

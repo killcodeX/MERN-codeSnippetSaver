@@ -7,7 +7,7 @@ import { getCodes } from '../redux/actions/actions';
 
 export default function AllSnippets() {
   const dispatch = useDispatch();
-  const data =[] //useSelector((state) => state.Codes.Codes);
+  const data = useSelector((state) => state.Codes.Codes);
   const [show, setShow] = useState(false);
   const [editShow, setEditShow] = useState(false)
   const [selectData, setSelectData] = useState({})

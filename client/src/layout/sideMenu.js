@@ -5,7 +5,7 @@ import { filterLanguage } from "../redux/actions/actions";
 //import {filterLanguage} from '../redux/actions/actionContant'
 
 export default function SideMenu() {
-  let languages = ["All Languages","Javascript", "CSS", "Java", "Python", "C++", "C#"];
+  let languages = ["All Languages","Javascript", "CSS", "Java", "Python", "C++", "C#", "HTML", "Go","Dart","React"];
   const [selected, setSelected] = useState(0);
   const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ export default function SideMenu() {
         return (
           <p key={index}
             className={
-              selected == index ? "side-menu-list active" : "side-menu-list"
+              selected === index ? "side-menu-list active" : "side-menu-list"
             }
             onClick={() => handleFilter(index)}
           >

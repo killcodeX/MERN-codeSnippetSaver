@@ -24,13 +24,14 @@ export const getCodes = () => async (dispatch) => {
   });
 };
 
-// export const getSingleProduct = (id) => async (dispatch) => {
-//   const result = await getSingleProductsAPI(id);
-//   dispatch({
-//     type: GetSingleProducts,
-//     payload: result,
-//   });
-// };
+export const addNewCode = (data) => async (dispatch) => {
+  //const result = await getSingleProductsAPI(id);
+  console.log('data received', data)
+  dispatch({
+    type: AddSingleCode,
+    payload: data,
+  });
+};
 
 export const filterLanguage = (lang) => {
   //console.log('from action', lang)

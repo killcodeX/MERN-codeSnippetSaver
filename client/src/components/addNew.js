@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { CardWrapper } from "../layout/theme";
 import { useFormik } from "formik";
 import { Modal, Form, Button, Col } from "react-bootstrap";
+import { addNewCode } from "../redux/actions/actions";
+import { useDispatch } from "react-redux";
 
 export default function AddNew() {
-
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
 
   const validate = (values) => {
     const errors = {};
@@ -37,13 +38,13 @@ export default function AddNew() {
       title: "",
       desc: "",
       language: "",
-      code: "",
+      code: ``,
     },
     validate: validate,
     onSubmit: (values) => {
       console.log("clik");
       handleClose();
-      alert(JSON.stringify(values, null, 2));
+      dispatch(addNewCode(values))
     },
   });
 
