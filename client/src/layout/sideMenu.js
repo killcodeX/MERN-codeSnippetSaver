@@ -19,7 +19,7 @@ export default function SideMenu() {
       <h4 className="side-menu">Languages</h4>
       {languages.map((item, index) => {
         return (
-          <p
+          <p key={index}
             className={
               selected == index ? "side-menu-list active" : "side-menu-list"
             }

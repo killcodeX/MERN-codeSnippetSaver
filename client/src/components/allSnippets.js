@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MainLinked, CardWrapper } from "../layout/theme";
 import { Row, Col, Container } from "react-bootstrap";
 import { AddNew, CodeModal, EditModal } from ".";
 import { useSelector } from "react-redux";
+import { getCodes } from '../redux/actions/actions';
 
 export default function AllSnippets() {
-  const data = useSelector((state) => state.Products.Codes);
+  const data = useSelector((state) => state.Codes.Codes);
   const [show, setShow] = useState(false);
   const [editShow, setEditShow] = useState(false)
   const [selectData, setSelectData] = useState({})
+
+  useEffect(() => {
+    getCodes()
+  }, [])
 
   // for Edit code modal
   const handleEditModalClose = () => setEditShow(false);

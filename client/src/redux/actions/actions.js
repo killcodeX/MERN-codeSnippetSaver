@@ -10,16 +10,19 @@ import {
   Logout,
 } from "./actionConstant";
 
-//import { getProductsAPI, getSingleProductsAPI } from "../../api";
+// getSingleProductsAPI
+
+import { getCodeApi } from "../../api/getCodeApi";
 
 // actions
-// export const getProducts = () => async (dispatch) => {
-//   const result = await getProductsAPI();
-//   dispatch({
-//     type: GetProducts,
-//     payload: result,
-//   });
-// };
+export const getCodes = () => async (dispatch) => {
+  const result = await getCodeApi();
+  console.log('called')
+  dispatch({
+    type: GetCode,
+    payload: result,
+  });
+};
 
 // export const getSingleProduct = (id) => async (dispatch) => {
 //   const result = await getSingleProductsAPI(id);

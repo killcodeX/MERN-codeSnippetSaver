@@ -5,6 +5,6 @@ import ProductReducer from './reducers';
 
 
 export default combineReducers({
-    Products: ProductReducer,
+    Codes: ProductReducer,
     //Auth: AuthReducer
 })

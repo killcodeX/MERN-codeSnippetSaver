@@ -7,6 +7,11 @@ export default function Header() {
   const [inputData, setInputData] = useState("");
   const [isDark, setIsDark] = useState(false);
 
+  const handleThemeChange = (e) => {
+    setIsDark(e.target.checked)
+    console.log('theme change', isDark)
+  }
+
   return (
     <NavLinked>
       <h2 style={{fontFamily: "Lobster"}}>Code Snippet Saver</h2>
@@ -18,7 +23,7 @@ export default function Header() {
       <Toggle
         className="DarkToggle"
         checked={isDark}
-        onChange={(event) => setIsDark(event.target.checked)}
+        onChange={(e) => handleThemeChange(e)}
         icons={{ checked: "🔆", unchecked: "🌙" }}
         aria-label="Dark mode"
       />
