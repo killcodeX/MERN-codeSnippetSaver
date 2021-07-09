@@ -42,10 +42,11 @@ export default function AddNew() {
       code: ``,
     },
     validate: validate,
-    onSubmit: (values) => {
-      console.log("clik");
+    onSubmit: (values, {resetForm}) => {
+      console.log("values -->", values);
       handleClose();
-      dispatch(addNewCode(values))
+      //dispatch(addNewCode(values))
+      resetForm({values:''})
     },
   });
 
@@ -100,6 +101,7 @@ export default function AddNew() {
                 onChange={formik.handleChange}
                 isInvalid={formik.errors.language}
               >
+                <option disabled selected>Select Any language</option>
                 <option>JavaScript</option>
                 <option>CSS</option>
                 <option>Java</option>
