@@ -42,11 +42,11 @@ export default function AddNew() {
       code: ``,
     },
     validate: validate,
-    onSubmit: (values, {resetForm}) => {
-      console.log("values -->", values);
+    onSubmit: (values, { resetForm }) => {
+      //console.log("values -->", values);
       handleClose();
       //dispatch(addNewCode(values))
-      resetForm({values:''})
+      resetForm({ values: "" });
     },
   });
 
@@ -54,20 +54,26 @@ export default function AddNew() {
 
   return (
     <>
-      <Col xs={4} style={{ cursor: "pointer" }} onClick={handleShow}>
-        <CardWrapper className="d-flex flex-column justify-content-center align-items-center">
-          <img
-            src={process.env.PUBLIC_URL + theme === false? "/white-add.png" : "/black-add.png"}
-            alt="add new snippet"
-          />
-        </CardWrapper>
-      </Col>
+      {theme == false ? (
+        <Col xs={4} style={{ cursor: "pointer" }} onClick={handleShow}>
+          <CardWrapper className="d-flex flex-column justify-content-center align-items-center">
+            <img src={process.env.PUBLIC_URL + "/white-add.png"} alt="add new snippet" />
+          </CardWrapper>
+        </Col>
+      ) : (
+        <Col xs={4} style={{ cursor: "pointer" }} onClick={handleShow}>
+          <CardWrapper className="d-flex flex-column justify-content-center align-items-center">
+            <img src={ process.env.PUBLIC_URL + "/black-add.png"} alt="add new snippet"/>
+          </CardWrapper>
+        </Col>
+      )}
+
       <Modal centered show={show} onHide={handleClose}>
         <Modal.Header>
           <Modal.Title>Add New Snippet</Modal.Title>
         </Modal.Header>
         <Form onSubmit={formik.handleSubmit}>
-          <Modal.Body style={{background:theme == false? '#25262c':null}}>
+          <Modal.Body style={{ background: theme == false ? "#25262c" : null }}>
             <Form.Group controlId="title">
               <Form.Label>Title</Form.Label>
               <Form.Control
@@ -101,7 +107,9 @@ export default function AddNew() {
                 onChange={formik.handleChange}
                 isInvalid={formik.errors.language}
               >
-                <option disabled selected>Select Any language</option>
+                <option disabled selected>
+                  Select Any language
+                </option>
                 <option>JavaScript</option>
                 <option>CSS</option>
                 <option>Java</option>
