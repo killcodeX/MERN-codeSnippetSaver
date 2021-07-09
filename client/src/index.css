@@ -13,6 +13,10 @@
 
 /* toggler */
 
+.react-toggle-track{
+  border:2px solid black;
+}
+
 .react-toggle-track-x {
   width: 15px !important;
   top: 50% !important;
@@ -27,27 +31,27 @@
   background-color: white !important;
 }
 
-.modal-content {
+/* .modal-content {
   background: #25262c !important;
   color: white !important;
-}
+} */
 
 p.side-menu-list {
   font-size: 1rem;
   padding-left: 10px;
   cursor: pointer;
-  transition: all 0.3s;
 }
 
-p.side-menu-list:hover {
+.active-black {
   background: white;
   color: #25262c;
 }
 
-.active {
-  background: white;
-  color: #25262c;
+.active-white {
+  background: #25262c;
+  color: #FFF;
 }
+
 
 h4.side-menu {
   font-size: 1.4rem;

@@ -1,17 +1,30 @@
 import React, { useState } from "react";
 import { SideLinked } from "./theme";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filterLanguage } from "../redux/actions/actions";
 //import {filterLanguage} from '../redux/actions/actionContant'
 
 export default function SideMenu() {
-  let languages = ["All Languages","Javascript", "CSS", "Java", "Python", "C++", "C#", "HTML", "Go","Dart","React"];
-  const [selected, setSelected] = useState(0);
   const dispatch = useDispatch();
+  const theme = useSelector((state) => state.Codes.theme);
+  let languages = [
+    "All Languages",
+    "Javascript",
+    "CSS",
+    "Java",
+    "Python",
+    "C++",
+    "C#",
+    "HTML",
+    "Go",
+    "Dart",
+    "React",
+  ];
+  const [selected, setSelected] = useState(0);
 
-  const handleFilter = index => {
+  const handleFilter = (index) => {
     dispatch(filterLanguage(languages[index]));
-    setSelected(index)
+    setSelected(index);
   };
 
   return (
@@ -19,9 +32,14 @@ export default function SideMenu() {
       <h4 className="side-menu">Languages</h4>
       {languages.map((item, index) => {
         return (
-          <p key={index}
+          <p
+            key={index}
             className={
-              selected === index ? "side-menu-list active" : "side-menu-list"
+              selected === index
+                ? theme
+                  ? "side-menu-list active-white"
+                  : "side-menu-list active-black"
+                : "side-menu-list"
             }
             onClick={() => handleFilter(index)}
           >

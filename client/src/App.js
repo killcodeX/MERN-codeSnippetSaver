@@ -9,7 +9,7 @@ function App() {
   const theme = useSelector(state => state.Codes.theme)
   console.log('hhhh-->', theme)
   return (
-    <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
+    <ThemeProvider theme={theme === false ?  darkTheme : lightTheme}>
       <Header/>
       <SideMenu>
       </SideMenu>

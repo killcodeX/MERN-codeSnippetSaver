@@ -3,10 +3,11 @@ import { CardWrapper } from "../layout/theme";
 import { useFormik } from "formik";
 import { Modal, Form, Button, Col } from "react-bootstrap";
 import { addNewCode } from "../redux/actions/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function AddNew() {
   const dispatch = useDispatch();
+  const theme = useSelector((state) => state.Codes.theme);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -55,7 +56,7 @@ export default function AddNew() {
       <Col xs={4} style={{ cursor: "pointer" }} onClick={handleShow}>
         <CardWrapper className="d-flex flex-column justify-content-center align-items-center">
           <img
-            src={process.env.PUBLIC_URL + "/white-add.png"}
+            src={process.env.PUBLIC_URL + theme === false? "/white-add.png" : "/black-add.png"}
             alt="add new snippet"
           />
         </CardWrapper>
@@ -65,7 +66,7 @@ export default function AddNew() {
           <Modal.Title>Add New Snippet</Modal.Title>
         </Modal.Header>
         <Form onSubmit={formik.handleSubmit}>
-          <Modal.Body>
+          <Modal.Body style={{background:theme == false? '#25262c':null}}>
             <Form.Group controlId="title">
               <Form.Label>Title</Form.Label>
               <Form.Control

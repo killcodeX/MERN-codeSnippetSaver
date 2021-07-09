@@ -1,15 +1,39 @@
 import styled from "styled-components";
 
 export const lightTheme = {
-  body: "#E9F1FC",
-  text: "#363537",
+  body: "#FFF", // for body background
+  head: "#FFF", // for Main mneu head background
+  headText: "#0f0f0f", // for Main menu head text
+  headerInputBackground: "#FFF", // for input background in head
+  headerInputShadow: "0 2px 5px 1px rgb(64 60 67 / 16%)", // for input search in head
+  headerInputtext: "#000", // for input serach text
+  headShadow: "1px 8px 17px -12px rgb(0 0 0 / 15%)", // for Main menu head shadow
+  sideMenu: "#FFF", // for side menu background
+  sidetext: "#0f0f0f", // for side menu text
+  cardBackground: "#FFF", // for card background
+  cardShadow: "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)", // for card shadow
+  cardText: "#000", // for card text
+  tagBackground: "#000", // for tag background
+  tagText: "#FFF", //for tag text
   toggleBorder: "#FFF",
   background: "#fff",
   boxShadow: "0px 8px 20px rgba(0,0,0,0.06)",
 };
 export const darkTheme = {
-  body: "#1A1C22",
-  text: "#FAFAFA",
+  body: "#1a1c22", // for body background
+  head: "#0f0f0f", // for Main mneu head background
+  headText: "#FFF", // for Main menu head text
+  headerInputBackground: "#25262c", // for input background in head
+  headerInputShadow: "", // for input search in head
+  headerInputtext: "#FFF", // for input serach text
+  headShadow: "", // for Main menu head shadow
+  sideMenu: "#191b1f", // for side menu background
+  sideText: "#FFF", // for side menu text
+  cardBackground: "#25262c", // for card background
+  cardShadow: "", // for card shadow
+  cardText: "#FFF", // for card text
+  tagBackground: "#efefef", // for tag background
+  tagText: "#000", //for tag text
   toggleBorder: "#6B8096",
   background: "#292929",
   boxShadow: "0px 8px 20px rgba(0,0,0,0.116)",
@@ -19,15 +43,15 @@ export const darkTheme = {
 
 //NavLinked
 export const NavLinked = styled.nav`
-  background: #0f0f0f;
+  background: ${(props) => props.theme.head};
+  box-shadow: ${(props) => props.theme.headShadow};
+  color: ${(props) => props.theme.headText};
   height: 80px;
   padding: 20px 40px;
-  color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  // box-shadow: ${(props) => console.log('theme from css',props.theme.boxShadow)};
   position: absolute;
   top: 0;
   left: 0;
@@ -38,28 +62,29 @@ export const NavLinked = styled.nav`
 // header searchbar
 
 export const HeaderSearch = styled.input`
-  padding:10px;
-  background: #25262c;
+  background: ${(props) => props.theme.headerInputBackground};
+  box-shadow: ${(props) => props.theme.headerInputShadow};
+  color: ${(props) => props.theme.headerInputtext};
+  padding: 10px;
   width: 480px;
-  border: none;
+  border: 2px solid #000;
   border-radius: 10px;
   height: 35px;
-  color:white;
-  &:focus{
-    outline:none;
+  &:focus {
+    outline: none;
   }
 `;
 
 // side menu
 export const SideLinked = styled.div`
-  background: #191b1f;
+  background: ${(props) => props.theme.sideMenu};
+  color: ${(props) => props.theme.sideText};
   position: absolute;
   top: 60px;
   left: 0;
   //width: 200px;
   height: 87.2vh;
   padding: 15px;
-  color: white;
   font-family: poppins;
   border-right: 1px solid #2a2c31;
   margin-top: 25px;
@@ -68,16 +93,17 @@ export const SideLinked = styled.div`
 // main content margin-left:200px;
 
 export const MainLinked = styled.div`
+  background: ${(props) => props.theme.body};
   padding: 90px 0 50px 200px;
-  background: #1a1c22;
   color: white;
   max-height: 100vh;
   overflow-y: scroll;
 `;
 
 export const CardWrapper = styled.div`
-  background: #25262c;
-  color: white;
+  background: ${(props) => props.theme.cardBackground};
+  color: ${(props) => props.theme.cardText};
+  box-shadow: ${(props) => props.theme.cardShadow};
   padding: 15px;
   min-height: 250px;
   font-family: poppins;
@@ -87,8 +113,8 @@ export const CardWrapper = styled.div`
 `;
 
 export const Tag = styled.div`
-  color: #25262c;
-  background: #efefef;
+  background: ${(props) => props.theme.tagBackground};
+  color: ${(props) => props.theme.tagText};
   padding: 2px 7px;
   display: inline-block;
   border-radius: 5px;

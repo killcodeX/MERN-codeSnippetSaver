@@ -100,11 +100,11 @@ const initialState = {
 // Reducers
 const ProductReducer = (state = initialState, action) => {
   switch (action.type) {
-    //   case GetProducts:
-    //     return {
-    //       ...state,
-    //       Products: action.payload,
-    //     };
+      case GetCode:
+        return {
+          ...state,
+          Codes: action.payload,
+        };
 
       case AddSingleCode:
         return {

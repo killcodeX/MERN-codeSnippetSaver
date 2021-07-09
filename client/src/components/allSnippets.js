@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MainLinked, CardWrapper } from "../layout/theme";
+import { MainLinked, CardWrapper,Tag } from "../layout/theme";
 import { Row, Col, Container } from "react-bootstrap";
 import { AddNew, CodeModal, EditModal } from ".";
 import { useSelector, useDispatch } from "react-redux";
@@ -48,11 +48,11 @@ export default function AllSnippets() {
           <AddNew/>
           {data.map((item) => {
             return (
-              <Col xs={4} key={item.id}>
+              <Col xs={4} key={item._id}>
                 <CardWrapper>
                   <p className="code-title">{item.title}</p>
                   <p className="code-desc">{item.desc.slice(0, 75) + "..."}</p>
-                  <p className="code-language">{item.language}</p>
+                  <Tag>{item.language}</Tag>
                   <div className="displayBtn">
                     <div onClick={() => handleShowModal(item.id)}><i className="fas fa-code"></i></div>
                     <div onClick={() => handleEditShowModal(item.id)}><i className="far fa-edit"></i></div>
