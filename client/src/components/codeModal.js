@@ -9,7 +9,6 @@ export default function CodeModal({
   show,
   handleClose,
 }) {
-  console.log("from data", data);
   return (
     <Modal centered show={show} onHide={handleClose}>
       <Modal.Header>

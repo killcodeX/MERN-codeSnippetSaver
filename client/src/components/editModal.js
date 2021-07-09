@@ -1,9 +1,9 @@
 import React from "react";
 import { useFormik } from "formik";
-import { Modal, Form, Button} from "react-bootstrap";
+import { Modal, Form, Button } from "react-bootstrap";
 
-export default function EditModal({data, show, handleClose}) {
-    console.log('from edit modal',data)
+export default function EditModal({ data, show, handleClose }) {
+  console.log("from edit modal", data);
   const validate = (values) => {
     const errors = {};
 
@@ -80,12 +80,19 @@ export default function EditModal({data, show, handleClose}) {
               onChange={formik.handleChange}
               isInvalid={formik.errors.language}
             >
-              <option>JavaScript</option>
-              <option>CSS</option>
-              <option>Java</option>
-              <option>Python</option>
-              <option>C++</option>
-              <option>HTML</option>
+              <option value="" disabled selected>
+                Select Any language
+              </option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="CSS">CSS</option>
+              <option value="Java">Java</option>
+              <option value="Python">Python</option>
+              <option value="C++">C++</option>
+              <option value="C#">C#</option>
+              <option value="HTML">HTML</option>
+              <option value="Go">Go</option>
+              <option value="Dart">Dart</option>
+              <option value="React">React</option>
             </Form.Control>
             <Form.Control.Feedback type="invalid">
               {formik.errors.language}
