@@ -4,7 +4,7 @@ import {
   FilterLanguage,
   FilterSearch,
   RemoveCode,
-  TotalAmount,
+  ThemeChange,
   TotalproductToBuy,
 } from "../actions/actionConstant";
 
@@ -90,7 +90,7 @@ const initialState = {
       `,
     },
   ],
-  theme: "dark",
+  theme: false,
   TotalProduct: [],
   buyProduct: [],
   TotalAmount: null,
@@ -107,8 +107,6 @@ const ProductReducer = (state = initialState, action) => {
     //     };
 
       case AddSingleCode:
-        console.log(action)
-        console.log(state)
         return {
           ...state,
           Codes: [action.payload,...state.Codes],
@@ -142,20 +140,11 @@ const ProductReducer = (state = initialState, action) => {
     //       TotalProductBuy: data,
     //     };
 
-    //   case TotalAmount:
-    //     const total = [];
-    //     state.TotalProduct.map(product => {
-    //       state.buyProduct.map(item => {
-    //         if(item.id === product.id){
-    //           total.push(product.price * item.numberOfProduct)
-    //         }
-    //       })
-    //     })
-    //     const newTotal = total.reduce((acc, curr) => acc+curr,0)
-    //     return {
-    //       ...state,
-    //       TotalAmount: newTotal,
-    //     };
+      case ThemeChange:
+        return {
+          ...state,
+          theme: !state.theme,
+        };
 
     //   case RemovefromCart:
     //     return {

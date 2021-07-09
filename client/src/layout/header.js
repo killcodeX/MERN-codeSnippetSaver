@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { NavLinked, HeaderSearch } from "./theme";
+import { useDispatch } from "react-redux";
+import {themeChange} from '../redux/actions/actions'
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
 
 export default function Header() {
+  const dispatch = useDispatch();
   const [inputData, setInputData] = useState("");
   const [isDark, setIsDark] = useState(false);
 
   const handleThemeChange = (e) => {
     setIsDark(e.target.checked)
-    console.log('theme change', isDark)
+    dispatch(themeChange())
   }
 
   return (

@@ -4,7 +4,7 @@ import {
   FilterLanguage,
   FilterSearch,
   RemoveCode,
-  TotalAmount,
+  ThemeChange,
   TotalproductToBuy,
   Login,
   Logout,
@@ -12,12 +12,12 @@ import {
 
 // getSingleProductsAPI
 
-import { getCodeApi } from "../../api/getCodeApi";
+import { getCodeApi, sendSingleCodeApi } from "../../api";
 
 // actions
 export const getCodes = () => async (dispatch) => {
   const result = await getCodeApi();
-  console.log('called', result)
+  //console.log('called', result)
   dispatch({
     type: GetCode,
     payload: result,
@@ -25,8 +25,8 @@ export const getCodes = () => async (dispatch) => {
 };
 
 export const addNewCode = (data) => async (dispatch) => {
-  //const result = await getSingleProductsAPI(id);
-  console.log('data received', data)
+  const result = await sendSingleCodeApi(data);
+  //console.log('data received', data)
   dispatch({
     type: AddSingleCode,
     payload: data,
@@ -47,11 +47,11 @@ export const filterLanguage = (lang) => {
 //   };
 // };
 
-// export const totalAmount = () => {
-//   return {
-//     type: TotalAmount,
-//   };
-// };
+export const themeChange = () => {
+  return {
+    type: ThemeChange,
+  };
+};
 
 // export const totalproductToBuy = () => {
 //   return {

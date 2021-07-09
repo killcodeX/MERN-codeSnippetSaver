@@ -2,12 +2,14 @@ import './App.css';
 import { ThemeProvider } from "styled-components";
 import { Header, SideMenu } from './layout';
 import { lightTheme, darkTheme } from "./layout/theme";
-import {AllSnippets} from './components'
+import {AllSnippets} from './components';
+import { useSelector } from 'react-redux';
 
 function App() {
-  const blackMode = true;
+  const theme = useSelector(state => state.Codes.theme)
+  console.log('hhhh-->', theme)
   return (
-    <ThemeProvider theme={blackMode === true ? darkTheme : lightTheme}>
+    <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
       <Header/>
       <SideMenu>
       </SideMenu>

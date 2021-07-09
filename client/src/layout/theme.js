@@ -12,7 +12,7 @@ export const darkTheme = {
   text: "#FAFAFA",
   toggleBorder: "#6B8096",
   background: "#292929",
-  boxShadow: "",
+  boxShadow: "0px 8px 20px rgba(0,0,0,0.116)",
 };
 
 // components styles
@@ -27,7 +27,7 @@ export const NavLinked = styled.nav`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  // box-shadow: ${(props) => props.theme.boxShadow};
+  // box-shadow: ${(props) => console.log('theme from css',props.theme.boxShadow)};
   position: absolute;
   top: 0;
   left: 0;
