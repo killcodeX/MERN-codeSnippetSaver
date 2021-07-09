@@ -43,9 +43,9 @@ export default function AddNew() {
     },
     validate: validate,
     onSubmit: (values, { resetForm }) => {
-      //console.log("values -->", values);
+      console.log("values -->", values);
       handleClose();
-      //dispatch(addNewCode(values))
+      dispatch(addNewCode(values))
       resetForm({ values: "" });
     },
   });
@@ -73,7 +73,7 @@ export default function AddNew() {
           <Modal.Title>Add New Snippet</Modal.Title>
         </Modal.Header>
         <Form onSubmit={formik.handleSubmit}>
-          <Modal.Body style={{ background: theme == false ? "#25262c" : null }}>
+          <Modal.Body>
             <Form.Group controlId="title">
               <Form.Label>Title</Form.Label>
               <Form.Control
@@ -107,15 +107,19 @@ export default function AddNew() {
                 onChange={formik.handleChange}
                 isInvalid={formik.errors.language}
               >
-                <option disabled selected>
+                <option value='' disabled selected>
                   Select Any language
                 </option>
-                <option>JavaScript</option>
-                <option>CSS</option>
-                <option>Java</option>
-                <option>Python</option>
-                <option>C++</option>
-                <option>HTML</option>
+                <option value='JavaScript'>JavaScript</option>
+                <option value='CSS'>CSS</option>
+                <option value='Java'>Java</option>
+                <option value='Python'>Python</option>
+                <option value='C++'>C++</option>
+                <option value='C#'>C#</option>
+                <option value='HTML'>HTML</option>
+                <option value='Go'>Go</option>
+                <option value='Dart'>Dart</option>
+                <option value='React'>React</option>
               </Form.Control>
               <Form.Control.Feedback type="invalid">
                 {formik.errors.language}
