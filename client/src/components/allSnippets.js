@@ -8,6 +8,7 @@ import { getCodes } from '../redux/actions/actions';
 export default function AllSnippets() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.Codes.Codes);
+  console.log(data)
   const [show, setShow] = useState(false);
   const [editShow, setEditShow] = useState(false)
   const [selectData, setSelectData] = useState({})
@@ -30,7 +31,7 @@ export default function AllSnippets() {
     setShow(true)
   };
 
-  if(data.length == 0){
+  if(!data || data.length == 0){
     return(
       <MainLinked>
         <Container>
