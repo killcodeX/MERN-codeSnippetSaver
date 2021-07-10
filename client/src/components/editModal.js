@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { Modal, Form, Button } from "react-bootstrap";
 
 export default function EditModal({ data, show, handleClose }) {
   console.log("from edit modal", data);
+  const [initialValues, setInitialValues] = useState({
+    title: "",
+    desc: "",
+    language: "",
+    code: "",
+  });
+
+  useEffect(() => {
+    setInitialValues({
+      title: data.title,
+      desc: data.desc,
+      language: data.language,
+      code: data.code,
+    });
+  }, [data]);
+
   const validate = (values) => {
     const errors = {};
 
@@ -28,17 +44,19 @@ export default function EditModal({ data, show, handleClose }) {
 
   const formik = useFormik({
     initialValues: {
-      title: data.title,
-      desc: data.desc,
-      language: data.language,
-      code: data.code,
+      title: initialValues.title,
+      desc: initialValues.desc,
+      language: initialValues.language,
+      code:initialValues.code
     },
     validate: validate,
+    enableReinitialize: true,
     onSubmit: (values) => {
       handleClose();
       alert(JSON.stringify(values, null, 2));
     },
   });
+  console.log("values --", formik);
 
   return (
     <Modal centered show={show} onHide={handleClose}>
@@ -77,10 +95,11 @@ export default function EditModal({ data, show, handleClose }) {
             <Form.Label>Select Language</Form.Label>
             <Form.Control
               as="select"
+              value={formik.language}
               onChange={formik.handleChange}
               isInvalid={formik.errors.language}
             >
-              <option value="" disabled selected>
+              <option selected disabled>
                 Select Any language
               </option>
               <option value="JavaScript">JavaScript</option>

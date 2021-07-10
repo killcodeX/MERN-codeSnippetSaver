@@ -20,14 +20,14 @@ export default function AllSnippets() {
   // for Edit code modal
   const handleEditModalClose = () => setEditShow(false);
   const handleEditShowModal = (id) => {
-    setSelectData(data.filter(item => item.id == id)[0])
+    setSelectData(data.filter(item => item._id == id)[0])
     setEditShow(true)
   };
 
   // for code modal
   const handleClose = () => setShow(false);
   const handleShowModal = (id) => {
-    setSelectData(data.filter(item => item.id == id)[0])
+    setSelectData(data.filter(item => item._id == id)[0])
     setShow(true)
   };
 
@@ -55,8 +55,8 @@ export default function AllSnippets() {
                   <p className="code-desc">{item.desc.slice(0, 75) + "..."}</p>
                   <Tag>{item.language}</Tag>
                   <div className="displayBtn">
-                    <div onClick={() => handleShowModal(item.id)}><i className="fas fa-code"></i></div>
-                    <div onClick={() => handleEditShowModal(item.id)}><i className="far fa-edit"></i></div>
+                    <div onClick={() => handleShowModal(item._id)}><i className="fas fa-code"></i></div>
+                    <div onClick={() => handleEditShowModal(item._id)}><i className="far fa-edit"></i></div>
                     <i className="far fa-trash-alt"></i>
                   </div>
                 </CardWrapper>
