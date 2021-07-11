@@ -76,15 +76,15 @@ export const HeaderSearch = styled.input`
 
 export const SearchButton = styled.button`
   position: absolute;
-  top:2px;
+  top: 2px;
   right: 2px;
   padding: 4px;
   border: none;
   width: 40px;
   height: 31px;
-  cursor:pointer;
-  background: #0F0F0F;
-  color:white;
+  cursor: pointer;
+  background: #0f0f0f;
+  color: white;
 `;
 
 // side menu
@@ -137,15 +137,27 @@ export const CodeSnippetModal = styled.div`
   overflow-y: scroll;
 `;
 
-// export const CardWrapper = styled.div`
-//     background: ${props => props.theme.background};
-//     color:${props => props.theme.text};
-//     box-shadow:${props => props.theme.boxShadow};
-//     padding:20px;
-//     display: flex;
-//     -ms-flex-direction: column;
-//     flex-direction: column;
-//     background-clip: border-box;
-//     border: 1px solid rgba(0,0,0,.125);
-//     border-radius: .25rem;
-// `;
+export const AuthBody = styled.div`
+  background: ${(props) => props.theme.body};
+  padding-top:90px;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+`;
+
+export const LoginCard = styled.div`
+  background: ${(props) => props.theme.cardBackground};
+  color: ${(props) => props.theme.cardText};
+  box-shadow: ${(props) => props.theme.cardShadow};
+  padding:15px;
+  font-family: poppins;
+  width: 300px;
+  height:400px;
+  border-radius: 10px;
+`;
+
+// position:absolute;
+//   left:50%;
+//   top:50%;
+//   transform: translate(-50%, -50%);
