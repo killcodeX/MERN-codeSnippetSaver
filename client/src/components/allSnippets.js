@@ -3,7 +3,7 @@ import { MainLinked, CardWrapper,Tag } from "../layout/theme";
 import { Row, Col, Container } from "react-bootstrap";
 import { AddNew, CodeModal, EditModal } from ".";
 import { useSelector, useDispatch } from "react-redux";
-import { getCodes } from '../redux/actions/actions';
+import { getCodes, removeCode } from '../redux/actions/actions';
 
 export default function AllSnippets() {
   const dispatch = useDispatch();
@@ -31,6 +31,10 @@ export default function AllSnippets() {
     setShow(true)
   };
 
+  const handleDeleteCode = (id) => {
+    dispatch(removeCode(id))
+  }
+
   if(!data || data.length == 0){
     return(
       <MainLinked>
@@ -57,7 +61,7 @@ export default function AllSnippets() {
                   <div className="displayBtn">
                     <div onClick={() => handleShowModal(item._id)}><i className="fas fa-code"></i></div>
                     <div onClick={() => handleEditShowModal(item._id)}><i className="far fa-edit"></i></div>
-                    <i className="far fa-trash-alt"></i>
+                    <div onClick={() => handleDeleteCode(item._id)}><i className="far fa-trash-alt"></i></div>
                   </div>
                 </CardWrapper>
               </Col>

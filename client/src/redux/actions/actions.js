@@ -68,7 +68,8 @@ export const filterSearch = (data) => {
 };
 
 export const removeCode = (id) => async (dispatch) => {
-   await deleteCodeApi(id);
+  console.log(id)
+  await deleteCodeApi(id);
   dispatch({
     type:  RemoveCode,
     payload: id,

@@ -33,14 +33,23 @@ const ProductReducer = (state = initialState, action) => {
       };
 
     case FilterLanguage:
-      //console.log('form reducers', action)
-      const filterCode = state.Codes.filter(
-        (item) => item.language.toLowerCase() == action.payload.toLowerCase()
-      );
-      return {
-        ...state,
-        Codes: filterCode,
-      };
+      let allData = [...state.Codes];
+      console.log(action.payload)
+      if (action.payload == "All Languages") {
+        console.log()
+        return {
+          ...state,
+          Codes: allData,
+        };
+      } else {
+        const filterCode = state.Codes.filter(
+          (item) => item.language.toLowerCase() == action.payload.toLowerCase()
+        );
+        return {
+          ...state,
+          Codes: filterCode,
+        };
+      }
 
     case EditCode:
       const editedCode = state.Codes.map((item) =>
@@ -52,14 +61,16 @@ const ProductReducer = (state = initialState, action) => {
       };
 
     case FilterSearch:
-      const result = state.codes.filter((val) =>
+      console.log("received search query", action.payload);
+      //console.log(state.Codes)
+      const result = state.Codes.filter((val) =>
         val.title.toLowerCase().includes(action.payload.toLowerCase())
       );
-      console.log(result);
-      // return {
-      //   ...state,
-      //   TotalProductBuy: data,
-      // };
+      if (result.length < 1) alert("There is not title with that word !!");
+      return {
+        ...state,
+        Codes: result,
+      };
 
     case ThemeChange:
       return {
@@ -68,9 +79,11 @@ const ProductReducer = (state = initialState, action) => {
       };
 
     case RemoveCode:
+      let removeResult = state.Codes.filter(code => code._id != action.payload)
+      console.log(removeResult)
       return {
         ...state,
-        Codes: state.Codes.filter((code) => code.id !== action.payload),
+        Codes: removeResult
       };
 
     default:

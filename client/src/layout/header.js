@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLinked, HeaderSearch,  SearchButton } from "./theme";
+import { NavLinked, HeaderSearch, SearchButton } from "./theme";
 import { useDispatch } from "react-redux";
 import { themeChange, filterSearch } from "../redux/actions/actions";
 import Toggle from "react-toggle";
@@ -16,14 +16,19 @@ export default function Header() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(inputData)
-  }
+    e.preventDefault();
+    if (inputData != "") {
+      dispatch(filterSearch(inputData))
+      setInputData("");
+    } else {
+      alert('Enter some text !!')
+    }
+  };
 
   return (
     <NavLinked>
       <h2 style={{ fontFamily: "Lobster" }}>Code Snippet Saver</h2>
-      <form className='searchbar' onSubmit={handleSubmit}>
+      <form className="searchbar" onSubmit={handleSubmit}>
         <HeaderSearch
           placeholder="Search title ...."
           value={inputData}
@@ -42,6 +47,7 @@ export default function Header() {
       />
       <div className="user-Login">
         <i className="far fa-user-circle"></i>
+        <i className="fas fa-sign-out-alt"></i>
       </div>
     </NavLinked>
   );
