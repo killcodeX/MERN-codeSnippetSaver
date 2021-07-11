@@ -139,7 +139,7 @@ export const CodeSnippetModal = styled.div`
 
 export const AuthBody = styled.div`
   background: ${(props) => props.theme.body};
-  padding-top:90px;
+  padding-top:70px;
   height:100vh;
   display:flex;
   justify-content:center;
@@ -153,7 +153,7 @@ export const LoginCard = styled.div`
   padding:15px;
   font-family: poppins;
   width: 450px;
-  height:400px;
+  min-height:400px;
   border-radius: 10px;
 `;
 

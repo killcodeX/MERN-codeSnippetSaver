@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { useFormik } from "formik";
+import { Link } from 'react-router-dom'
 import { LoginCard, AuthBody } from "../../layout/theme";
 
 export default function Login() {
@@ -74,6 +75,7 @@ export default function Login() {
             Submit
           </Button>
         </Form>
+        <div className='pt-5'>Not a member? <Link to='/register'>Register</Link> now !</div>
       </LoginCard>
     </AuthBody>
   );
