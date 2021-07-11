@@ -1,5 +1,5 @@
 import PostMessage from "../models/postMessages.js";
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 export const getPost = async (req, res) => {
   try {
@@ -26,21 +26,31 @@ export const createPost = async (req, res) => {
 export const updatePost = async (req, res) => {
   const { id: _id } = req.params;
   const post = req.body;
-  console.log('body --->', post)
 
   if (!mongoose.Types.ObjectId.isValid(_id))
     return res.status(404).send("No Code Snippet with that Id");
 
-    const update = await PostMessage.findByIdAndUpdate(_id, post, {
-        new: true,
-      });
+  const update = await PostMessage.findByIdAndUpdate(_id, post, {
+    new: true,
+  });
 
-    res.json(update)
-      
+  res.json(update);
+
   // try {
-    
+
   //   res.status(201).json(update);
   // } catch (error) {
   //   res.status(404).json({ message: error.message });
   // }
+};
+
+export const deletePost = async (req, res) => {
+  const { id: _id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(_id))
+    return res.status(404).send("No Code Snippet with that Id");
+
+  await PostMessage.findByIdAndRemove(id);
+
+  res.json({ message: "Post Deleted Successfully" });
 };

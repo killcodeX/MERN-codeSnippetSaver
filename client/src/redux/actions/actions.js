@@ -12,7 +12,12 @@ import {
 
 // getSingleProductsAPI
 
-import { getCodeApi, sendSingleCodeApi, editCodeApi } from "../../api";
+import {
+  getCodeApi,
+  sendSingleCodeApi,
+  editCodeApi,
+  deleteCodeApi,
+} from "../../api";
 
 // actions
 export const getCodes = () => async (dispatch) => {
@@ -55,18 +60,20 @@ export const themeChange = () => {
   };
 };
 
-// export const totalproductToBuy = () => {
-//   return {
-//     type: TotalproductToBuy,
-//   };
-// };
+export const filterSearch = (data) => {
+  return {
+    type: FilterSearch,
+    payload:data,
+  };
+};
 
-// export const removefromCart = (id) => {
-//   return {
-//     type: RemovefromCart,
-//     payload: id,
-//   };
-// };
+export const removeCode = (id) => async (dispatch) => {
+   await deleteCodeApi(id);
+  dispatch({
+    type:  RemoveCode,
+    payload: id,
+  });
+};
 
 // for Authentication
 

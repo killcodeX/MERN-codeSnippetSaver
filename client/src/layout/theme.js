@@ -68,11 +68,23 @@ export const HeaderSearch = styled.input`
   padding: 10px;
   width: 480px;
   border: 2px solid #000;
-  border-radius: 10px;
   height: 35px;
   &:focus {
     outline: none;
   }
+`;
+
+export const SearchButton = styled.button`
+  position: absolute;
+  top:2px;
+  right: 2px;
+  padding: 4px;
+  border: none;
+  width: 40px;
+  height: 31px;
+  cursor:pointer;
+  background: #0F0F0F;
+  color:white;
 `;
 
 // side menu
@@ -96,7 +108,7 @@ export const MainLinked = styled.div`
   background: ${(props) => props.theme.body};
   padding: 90px 0 50px 200px;
   color: white;
-  max-height: 100vh;
+  height: 100vh;
   overflow-y: scroll;
 `;
 

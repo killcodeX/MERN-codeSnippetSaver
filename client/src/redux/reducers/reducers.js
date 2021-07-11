@@ -20,62 +20,58 @@ const initialState = {
 // Reducers
 const ProductReducer = (state = initialState, action) => {
   switch (action.type) {
-      case GetCode:
-        return {
-          ...state,
-          Codes: action.payload || [],
-        };
+    case GetCode:
+      return {
+        ...state,
+        Codes: action.payload || [],
+      };
 
-      case AddSingleCode:
-        return {
-          ...state,
-          Codes: [action.payload,...state.Codes],
-        };
+    case AddSingleCode:
+      return {
+        ...state,
+        Codes: [action.payload, ...state.Codes],
+      };
 
     case FilterLanguage:
       //console.log('form reducers', action)
-      const filterCode = state.Codes.filter(item => item.language.toLowerCase() == action.payload.toLowerCase())
-      //console.log('filter by lang', filterCode)
+      const filterCode = state.Codes.filter(
+        (item) => item.language.toLowerCase() == action.payload.toLowerCase()
+      );
       return {
         ...state,
-        TotalProduct: filterCode,
+        Codes: filterCode,
       };
 
-      case EditCode:
-        const editedCode = state.Codes.map((item) =>
-          item._id === action.payload._id? action.payload : item
-        );
-        return {
-          ...state,
-          Codes: editedCode,
-        };
+    case EditCode:
+      const editedCode = state.Codes.map((item) =>
+        item._id === action.payload._id ? action.payload : item
+      );
+      return {
+        ...state,
+        Codes: editedCode,
+      };
 
-    //   case TotalproductToBuy:
-    //     const data = state.buyProduct.reduce(
-    //       (acc, currentValue) => acc + currentValue.numberOfProduct,
-    //       0
-    //     );
-    //     return {
-    //       ...state,
-    //       TotalProductBuy: data,
-    //     };
+    case FilterSearch:
+      const result = state.codes.filter((val) =>
+        val.title.toLowerCase().includes(action.payload.toLowerCase())
+      );
+      console.log(result);
+      // return {
+      //   ...state,
+      //   TotalProductBuy: data,
+      // };
 
-      case ThemeChange:
-        return {
-          ...state,
-          theme: !state.theme,
-        };
+    case ThemeChange:
+      return {
+        ...state,
+        theme: !state.theme,
+      };
 
-    //   case RemovefromCart:
-    //     return {
-    //       ...state,
-    //       TotalProduct: state.TotalProduct.filter(
-    //         (product) => product.id !== action.payload
-    //       ),
-    //       buyProduct: state.buyProduct.filter(
-    //         (product) => product.id !== action.payload
-    //       ),
-    //     };
+    case RemoveCode:
+      return {
+        ...state,
+        Codes: state.Codes.filter((code) => code.id !== action.payload),
+      };
 
     default:
       return state;
