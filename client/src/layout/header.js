@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLinked, HeaderSearch, SearchButton } from "./theme";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { themeChange, filterSearch } from "../redux/actions/actions";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
@@ -18,10 +19,10 @@ export default function Header() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputData != "") {
-      dispatch(filterSearch(inputData))
+      dispatch(filterSearch(inputData));
       setInputData("");
     } else {
-      alert('Enter some text !!')
+      alert("Enter some text !!");
     }
   };
 

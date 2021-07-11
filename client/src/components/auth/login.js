@@ -1,7 +1,8 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { useFormik } from "formik";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { GoogleLogin } from "react-google-login";
 import { LoginCard, AuthBody } from "../../layout/theme";
 
 export default function Login() {
@@ -13,7 +14,7 @@ export default function Login() {
 
     if (!values.email) {
       errors.email = "Required";
-    } 
+    }
 
     if (!values.password) {
       errors.password = "Required";
@@ -36,6 +37,24 @@ export default function Login() {
       console.log("values -->", values);
     },
   });
+
+
+  const googleSuccess = async (res) => {
+    const result = await res?.profileObj;
+    const token = await res?.tokenId;
+
+    try{
+
+    } catch(error){
+        console.log(error)
+    }
+  }
+
+  const googleFailure = () => {
+    console.log('Google Sign In was unsuccessful... Try Again later !!')
+  }
+
+
   return (
     <AuthBody>
       <LoginCard>
@@ -71,11 +90,30 @@ export default function Login() {
               {formik.errors.title}
             </Form.Control.Feedback>
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
+          <div className="d-flex flex-column">
+            <GoogleLogin
+              clientId={process.env.REACT_APP_GOOGLE_ID}
+              render={(renderPros) => (
+                <Button
+                  className="mt-3"
+                  variant="primary"
+                  onClick={renderPros.onClick}
+                  disabled={renderPros.disabled}
+                >
+                  Google Sign In
+                </Button>
+              )}
+                onSuccess={googleSuccess}
+                onFailure={googleFailure}
+            />
+            <Button className="mt-3" variant="primary" type="submit">
+              Submit
+            </Button>
+          </div>
         </Form>
-        <div className='pt-5'>Not a member? <Link to='/register'>Register</Link> now !</div>
+        <div className="pt-5">
+          Not a member? <Link to="/register">Register</Link> now !
+        </div>
       </LoginCard>
     </AuthBody>
   );
