@@ -5,7 +5,7 @@ import {
   FilterSearch,
   RemoveCode,
   ThemeChange,
-  TotalproductToBuy,
+  EditCode,
 } from "../actions/actionConstant";
 
 const initialState = {
@@ -41,14 +41,14 @@ const ProductReducer = (state = initialState, action) => {
         TotalProduct: filterCode,
       };
 
-    //   case CartProduct:
-    //     const totalItemBuy = state.Products.filter((data1) =>
-    //       state.buyProduct.some((data2) => data1.id === data2.id)
-    //     );
-    //     return {
-    //       ...state,
-    //       TotalProduct: totalItemBuy,
-    //     };
+      case EditCode:
+        const editedCode = state.Codes.map((item) =>
+          item._id === action.payload._id? action.payload : item
+        );
+        return {
+          ...state,
+          Codes: editedCode,
+        };
 
     //   case TotalproductToBuy:
     //     const data = state.buyProduct.reduce(

@@ -5,14 +5,14 @@ import {
   FilterSearch,
   RemoveCode,
   ThemeChange,
-  TotalproductToBuy,
+  EditCode,
   Login,
   Logout,
 } from "./actionConstant";
 
 // getSingleProductsAPI
 
-import { getCodeApi, sendSingleCodeApi } from "../../api";
+import { getCodeApi, sendSingleCodeApi, editCodeApi } from "../../api";
 
 // actions
 export const getCodes = () => async (dispatch) => {
@@ -33,6 +33,14 @@ export const addNewCode = (data) => async (dispatch) => {
   });
 };
 
+export const editCode = (id, data) => async (dispatch) => {
+  const result = await editCodeApi(id, data);
+  dispatch({
+    type: EditCode,
+    payload: result,
+  });
+};
+
 export const filterLanguage = (lang) => {
   //console.log('from action', lang)
   return {
@@ -40,12 +48,6 @@ export const filterLanguage = (lang) => {
     payload: lang,
   };
 };
-
-// export const cartProduct = () => {
-//   return {
-//     type: CartProduct,
-//   };
-// };
 
 export const themeChange = () => {
   return {

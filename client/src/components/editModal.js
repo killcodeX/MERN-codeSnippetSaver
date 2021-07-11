@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { Modal, Form, Button } from "react-bootstrap";
+import {useDispatch} from 'react-redux'
+import {editCode} from '../redux/actions/actions'
 
 export default function EditModal({ data, show, handleClose }) {
-  console.log("from edit modal", data);
+  const dispatch = useDispatch()
   const [initialValues, setInitialValues] = useState({
     title: "",
     desc: "",
@@ -52,11 +54,11 @@ export default function EditModal({ data, show, handleClose }) {
     validate: validate,
     enableReinitialize: true,
     onSubmit: (values) => {
+      dispatch(editCode(data._id, values))
       handleClose();
-      alert(JSON.stringify(values, null, 2));
+      //alert(JSON.stringify(values, null, 2));
     },
   });
-  console.log("values --", formik);
 
   return (
     <Modal centered show={show} onHide={handleClose}>
@@ -99,7 +101,7 @@ export default function EditModal({ data, show, handleClose }) {
               onChange={formik.handleChange}
               isInvalid={formik.errors.language}
             >
-              <option selected disabled>
+              <option value='' disabled>
                 Select Any language
               </option>
               <option value="JavaScript">JavaScript</option>

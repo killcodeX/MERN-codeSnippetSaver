@@ -107,7 +107,7 @@ export default function AddNew() {
                 onChange={formik.handleChange}
                 isInvalid={formik.errors.language}
               >
-                <option disabled selected>
+                <option value='' disabled>
                   Select Any language
                 </option>
                 <option value='JavaScript'>JavaScript</option>

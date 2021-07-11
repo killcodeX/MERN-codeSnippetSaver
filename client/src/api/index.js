@@ -1,5 +1,5 @@
-import { getCodeApi } from './getCodeApi';
-import {sendSingleCodeApi} from './sendSingleCode'
+import { getCodeApi } from "./getCodeApi";
+import { sendSingleCodeApi } from "./sendSingleCode";
+import { editCodeApi } from "./editCodeApi";
 
-
-export {getCodeApi, sendSingleCodeApi}
+export { getCodeApi, sendSingleCodeApi, editCodeApi };
