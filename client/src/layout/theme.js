@@ -152,7 +152,7 @@ export const LoginCard = styled.div`
   box-shadow: ${(props) => props.theme.cardShadow};
   padding:15px;
   font-family: poppins;
-  width: 300px;
+  width: 450px;
   height:400px;
   border-radius: 10px;
 `;

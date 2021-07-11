@@ -1,0 +1,8 @@
+/* login and register css */
+
+.auth-title{
+    display: flex;
+    justify-content: center;
+    font-size: 23px;
+    font-weight: 600;
+}
