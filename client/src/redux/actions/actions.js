@@ -82,8 +82,10 @@ export const removeCode = (id) => async (dispatch) => {
   });
 };
 
-// for Authentication
 
+
+
+// for Authentication
 export const googleUserLogin = (data) => {
   console.log('user data from google', data)
   return {
@@ -92,12 +94,17 @@ export const googleUserLogin = (data) => {
   };
 };
 
-export const userLoginrequest = (data) => {
+export const userLoginrequest = (data, history) => async (dispatch) => {
   console.log('got data', data)
-  return {
+  try{
+
+  } catch(error){
+    loginFailure(error)
+  }
+  dispatch({
     type: USER_LOGIN_REQUEST,
     paylaod: data,
-  }
+  })
 }
 
 export const loginFailure = (message) => {
@@ -107,11 +114,16 @@ export const loginFailure = (message) => {
   };
 };
 
-export const userRegisterSuccess = (data) => {
+export const userRegisterSuccess = (data, history) => async (dispatch) => {
   console.log('user register in action', data)
-  return {
-    type: SIGNUP_SUCCESS,
-    paylaod: data,
+  try{
+
+    dispatch({
+      type: SIGNUP_SUCCESS,
+      paylaod: data,
+    })
+  } catch(error){
+    loginFailure(error)
   }
 }
 
