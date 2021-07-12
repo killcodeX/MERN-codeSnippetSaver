@@ -6,10 +6,12 @@ import {
   RemoveCode,
   ThemeChange,
   EditCode,
+  CancelSearch
 } from "../actions/actionConstant";
 
 const initialState = {
   Codes: [],
+  copyCodes: [],
   theme: false,
   TotalProduct: [],
   buyProduct: [],
@@ -24,6 +26,7 @@ const ProductReducer = (state = initialState, action) => {
       return {
         ...state,
         Codes: action.payload || [],
+        copyCodes: action.payload || [],
       };
 
     case AddSingleCode:
@@ -71,6 +74,12 @@ const ProductReducer = (state = initialState, action) => {
         ...state,
         Codes: result,
       };
+
+    case CancelSearch:
+      return {
+        ...state,
+        Codes: [...state.copyCodes]
+      }
 
     case ThemeChange:
       return {

@@ -6,6 +6,7 @@ import {
   RemoveCode,
   ThemeChange,
   EditCode,
+  CancelSearch,
   GOOGLE_LOGIN_REQUEST,
   USER_LOGIN_REQUEST,
   LOGIN_FAILURE,
@@ -71,6 +72,12 @@ export const filterSearch = (data) => {
     payload: data,
   };
 };
+
+export const stopSearchFilter = () => {
+  return {
+    type: CancelSearch,
+  }
+}
 
 export const removeCode = (id) => async (dispatch) => {
   console.log(id);

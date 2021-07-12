@@ -77,6 +77,19 @@ export const HeaderSearch = styled.input`
 export const SearchButton = styled.button`
   position: absolute;
   top: 2px;
+  right: 43px;
+  padding: 4px;
+  width: 40px;
+  height: 31px;
+  cursor: pointer;
+  background: #0f0f0f;
+  color: white;
+  border:none;
+`;
+
+export const CancelButton = styled.button`
+  position: absolute;
+  top: 2px;
   right: 2px;
   padding: 4px;
   border: none;
@@ -139,21 +152,21 @@ export const CodeSnippetModal = styled.div`
 
 export const AuthBody = styled.div`
   background: ${(props) => props.theme.body};
-  padding-top:70px;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  padding-top: 70px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const LoginCard = styled.div`
   background: ${(props) => props.theme.cardBackground};
   color: ${(props) => props.theme.cardText};
   box-shadow: ${(props) => props.theme.cardShadow};
-  padding:15px;
+  padding: 15px;
   font-family: poppins;
   width: 450px;
-  min-height:400px;
+  min-height: 400px;
   border-radius: 10px;
 `;
 

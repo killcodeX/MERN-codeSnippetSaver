@@ -27,3 +27,4 @@ export const FilterLanguage = 'FILTER_BY_LANGUAGE';
 export const FilterSearch = 'FILTER_BY_SEARCH';
 export const ThemeChange = 'THEME_CHANGE';
 export const RemoveCode = 'REMOVE_CODE';
+export const CancelSearch = 'CANCEL_SEARCH';

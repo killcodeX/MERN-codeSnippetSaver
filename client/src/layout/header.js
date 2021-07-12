@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { NavLinked, HeaderSearch, SearchButton } from "./theme";
+import { NavLinked, HeaderSearch, SearchButton, CancelButton } from "./theme";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { themeChange, filterSearch, logOut } from "../redux/actions/actions";
+import {
+  themeChange,
+  filterSearch,
+  logOut,
+  stopSearchFilter
+} from "../redux/actions/actions";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
 
@@ -29,24 +34,34 @@ export default function Header() {
   };
 
   const handleLogOut = () => {
-    dispatch(logOut())
-    history.push('/login')
+    dispatch(logOut());
+    history.push("/login");
+  };
+
+  const handleCancelSearch = () => {
+    console.log('clicked')
+    dispatch(stopSearchFilter())
   }
 
   return (
     <NavLinked>
       <h2 style={{ fontFamily: "Lobster" }}>Code Snippet Saver</h2>
       {state.isAuthenticated == true ? (
-        <form className="searchbar" onSubmit={handleSubmit}>
-          <HeaderSearch
-            placeholder="Search title ...."
-            value={inputData}
-            onChange={(e) => setInputData(e.target.value)}
-          />
-          <SearchButton type="submit">
-            <i class="fas fa-search"></i>
-          </SearchButton>
-        </form>
+        <div className="searchbar">
+          <form onSubmit={handleSubmit}>
+            <HeaderSearch
+              placeholder="Search title ...."
+              value={inputData}
+              onChange={(e) => setInputData(e.target.value)}
+            />
+            <SearchButton type="submit">
+              <i className="fas fa-search"></i>
+            </SearchButton>
+          </form>
+          <CancelButton onClick={handleCancelSearch}>
+            <i className="fas fa-times"></i>
+          </CancelButton>
+        </div>
       ) : null}
       <Toggle
         className="DarkToggle"
@@ -59,7 +74,11 @@ export default function Header() {
         {state.isAuthenticated == true ? (
           <>
             <div title={state.googleUser.name}>
-              <img className='rounded-circle w-50' src={state.googleUser.imageUrl} alt={state.googleUser.givenName}/>
+              <img
+                className="rounded-circle w-50"
+                src={state.googleUser.imageUrl}
+                alt={state.googleUser.givenName}
+              />
             </div>
             <div title="Logout" className="logoutArea" onClick={handleLogOut}>
               <i className="fas fa-sign-out-alt"></i>
