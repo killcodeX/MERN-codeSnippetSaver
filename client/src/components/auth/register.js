@@ -3,20 +3,23 @@ import { Row, Col, Form, Button } from "react-bootstrap";
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 import { LoginCard, AuthBody } from "../../layout/theme";
+import { userRegisterSuccess } from "../../redux/actions/actions";
+import { useDispatch } from "react-redux";
 
 export default function Auth() {
+  const dispatch = useDispatch();
   const validate = (values) => {
     const errors = {};
 
     //const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     const passwordRegex = /(?=.*[0-9])/;
 
-    if(!values.fname){
-      errors.fname = 'Required'
+    if (!values.fname) {
+      errors.fname = "Required";
     }
 
-    if(!values.lname){
-      errors.lname = 'Required'
+    if (!values.lname) {
+      errors.lname = "Required";
     }
 
     if (!values.email) {
@@ -24,17 +27,18 @@ export default function Auth() {
     }
 
     if (!values.password) {
-      errors.password = "Required";}
+      errors.password = "Required";
+    }
     // } else if (values.password.length < 8) {
     //   errors.password = "Password must be 8 characters long.";
     // } else if (!passwordRegex.test(values.password)) {
     //   errors.password = "Invalid password. Must contain one number.";
     // }
 
-    if(!values.rpassword){
-      errors.rpassword = "Required"
-    }else if( values.rpassword != values.password){
-      errors.rpassword = 'Password does not match'
+    if (!values.rpassword) {
+      errors.rpassword = "Required";
+    } else if (values.rpassword != values.password) {
+      errors.rpassword = "Password does not match";
     }
 
     return errors;
@@ -42,15 +46,16 @@ export default function Auth() {
 
   const formik = useFormik({
     initialValues: {
-      fname:"",
-      lname:"",
+      fname: "",
+      lname: "",
       email: "",
       password: "",
-      rpassword:"",
+      rpassword: "",
     },
     validate: validate,
     onSubmit: (values, { resetForm }) => {
-      console.log("values -->", values);
+      dispatch(userRegisterSuccess(values));
+      resetForm({ values: "" });
     },
   });
   return (

@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { LoginCard, AuthBody } from "../../layout/theme";
-import { googleUserLogin, loginFailure } from "../../redux/actions/actions";
+import { googleUserLogin, loginFailure, userLoginrequest } from "../../redux/actions/actions";
 import { useDispatch } from "react-redux";
 
 export default function Login() {
@@ -38,7 +38,8 @@ export default function Login() {
     },
     validate: validate,
     onSubmit: (values, { resetForm }) => {
-      console.log("values -->", values);
+      dispatch(userLoginrequest(values))
+      resetForm({ values: "" });
     },
   });
 

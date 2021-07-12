@@ -1,15 +1,11 @@
 import {
   GOOGLE_LOGIN_REQUEST,
-  LOGIN_SUCCESS,
+  USER_LOGIN_REQUEST,
   LOGIN_FAILURE,
-  LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE,
-  SIGNUP_REQUEST,
   SIGNUP_SUCCESS,
   SIGNUP_FAILURE,
-  VERIFY_REQUEST,
-  VERIFY_SUCCESS,
   VERIFY_LOCAL_STORAGE,
 } from "../actions/actionConstant";
 
@@ -40,15 +36,15 @@ const AuthReducer = (state = initialState, action) => {
         googleUser: action.payload.result,
         googleToken: action.payload.token,
       };
-    case LOGIN_SUCCESS:
-      saveState("firebaseLoggedIn", true);
-      saveState("firebaseUser", action.user);
-      return {
-        ...state,
-        isLoggingIn: false,
-        isAuthenticated: true,
-        user: action.user,
-      };
+    // case LOGIN_SUCCESS:
+    //   saveState("firebaseLoggedIn", true);
+    //   saveState("firebaseUser", action.user);
+    //   return {
+    //     ...state,
+    //     isLoggingIn: false,
+    //     isAuthenticated: true,
+    //     user: action.user,
+    //   };
     case LOGIN_FAILURE:
       alert(action.message);
       return {
@@ -59,12 +55,12 @@ const AuthReducer = (state = initialState, action) => {
         errorMessage: action.message,
       };
 
-    case SIGNUP_REQUEST:
-      return {
-        ...state,
-        isSignUp: true,
-        SignUpError: false,
-      };
+    // case SIGNUP_REQUEST:
+    //   return {
+    //     ...state,
+    //     isSignUp: true,
+    //     SignUpError: false,
+    //   };
     case SIGNUP_SUCCESS:
       saveState("firebaseLoggedIn", true);
       saveState("firebaseUser", action.user);
@@ -83,12 +79,12 @@ const AuthReducer = (state = initialState, action) => {
         SignUpError: true,
         errorMessage: action.message,
       };
-    case LOGOUT_REQUEST:
-      return {
-        ...state,
-        isLoggingOut: true,
-        loginError: false,
-      };
+    // case LOGOUT_REQUEST:
+    //   return {
+    //     ...state,
+    //     isLoggingOut: true,
+    //     loginError: false,
+    //   };
     case LOGOUT_SUCCESS:
       saveState("googleLoggedIn", false);
       saveState("googleUser", {});

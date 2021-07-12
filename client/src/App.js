@@ -13,7 +13,6 @@ function App() {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.Codes.theme);
   const isAuthenticated = useSelector((state) => state.Auth.isAuthenticated);
-  console.log("history -->", history);
   useEffect(() => {
     dispatch(verifyStorage());
     if (!isAuthenticated) {

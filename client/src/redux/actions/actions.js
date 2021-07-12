@@ -7,9 +7,12 @@ import {
   ThemeChange,
   EditCode,
   GOOGLE_LOGIN_REQUEST,
+  USER_LOGIN_REQUEST,
   LOGIN_FAILURE,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILURE,
+  LOGOUT_SUCCESS,
   VERIFY_LOCAL_STORAGE,
-  LOGOUT_SUCCESS
 } from "./actionConstant";
 
 
@@ -89,12 +92,35 @@ export const googleUserLogin = (data) => {
   };
 };
 
+export const userLoginrequest = (data) => {
+  console.log('got data', data)
+  return {
+    type: USER_LOGIN_REQUEST,
+    paylaod: data,
+  }
+}
+
 export const loginFailure = (message) => {
   return {
     type: LOGIN_FAILURE,
     paylaod:message,
   };
 };
+
+export const userRegisterSuccess = (data) => {
+  console.log('user register in action', data)
+  return {
+    type: SIGNUP_SUCCESS,
+    paylaod: data,
+  }
+}
+
+export const userRegisterFail = (message) => {
+  return {
+    type: SIGNUP_FAILURE,
+    paylaod: message,
+  }
+}
 
 export const verifyStorage = () => {
   return {
