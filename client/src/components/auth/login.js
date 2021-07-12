@@ -4,8 +4,12 @@ import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { LoginCard, AuthBody } from "../../layout/theme";
+import { googleUserLogin, loginFailure } from "../../redux/actions/actions";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
+  const dispatch = useDispatch();
+
   const validate = (values) => {
     const errors = {};
 
@@ -38,22 +42,21 @@ export default function Login() {
     },
   });
 
-
   const googleSuccess = async (res) => {
     const result = await res?.profileObj;
     const token = await res?.tokenId;
-
-    try{
-
-    } catch(error){
-        console.log(error)
+    try {
+      dispatch(googleUserLogin({result, token}));
+    } catch (error) {
+      console.log(error);
+      dispatch(loginFailure('Login Failed'))
     }
-  }
+  };
 
   const googleFailure = () => {
-    console.log('Google Sign In was unsuccessful... Try Again later !!')
-  }
-
+    console.log("Google Sign In was unsuccessful... Try Again later !!");
+    dispatch(loginFailure("Google Sign In was unsuccessful... Try Again later !!"))
+  };
 
   return (
     <AuthBody>
@@ -103,8 +106,8 @@ export default function Login() {
                   Google Sign In
                 </Button>
               )}
-                onSuccess={googleSuccess}
-                onFailure={googleFailure}
+              onSuccess={googleSuccess}
+              onFailure={googleFailure}
             />
             <Button className="mt-3" variant="primary" type="submit">
               Submit

@@ -6,9 +6,12 @@ import {
   RemoveCode,
   ThemeChange,
   EditCode,
-  Login,
-  Logout,
+  GOOGLE_LOGIN_REQUEST,
+  LOGIN_FAILURE,
+  VERIFY_LOCAL_STORAGE,
+  LOGOUT_SUCCESS
 } from "./actionConstant";
+
 
 // getSingleProductsAPI
 
@@ -78,15 +81,29 @@ export const removeCode = (id) => async (dispatch) => {
 
 // for Authentication
 
-export const userLogin = (data) => {
+export const googleUserLogin = (data) => {
+  console.log('user data from google', data)
   return {
-    type: Login,
+    type: GOOGLE_LOGIN_REQUEST,
     payload: data,
   };
 };
 
-export const userLogout = () => {
+export const loginFailure = (message) => {
   return {
-    type: Logout,
+    type: LOGIN_FAILURE,
+    paylaod:message,
+  };
+};
+
+export const verifyStorage = () => {
+  return {
+    type: VERIFY_LOCAL_STORAGE,
+  };
+};
+
+export const logOut = () => {
+  return {
+    type: LOGOUT_SUCCESS,
   };
 };
