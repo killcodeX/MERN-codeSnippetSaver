@@ -1,13 +1,14 @@
 import React from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { LoginCard, AuthBody } from "../../layout/theme";
 import { userRegisterSuccess } from "../../redux/actions/actions";
 import { useDispatch } from "react-redux";
 
 export default function Auth() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const validate = (values) => {
     const errors = {};
 
@@ -54,7 +55,7 @@ export default function Auth() {
     },
     validate: validate,
     onSubmit: (values, { resetForm }) => {
-      dispatch(userRegisterSuccess(values));
+      dispatch(userRegisterSuccess(values, history));
       resetForm({ values: "" });
     },
   });

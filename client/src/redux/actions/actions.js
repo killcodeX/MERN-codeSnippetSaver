@@ -15,7 +15,6 @@ import {
   VERIFY_LOCAL_STORAGE,
 } from "./actionConstant";
 
-
 // getSingleProductsAPI
 
 import {
@@ -69,77 +68,82 @@ export const themeChange = () => {
 export const filterSearch = (data) => {
   return {
     type: FilterSearch,
-    payload:data,
+    payload: data,
   };
 };
 
 export const removeCode = (id) => async (dispatch) => {
-  console.log(id)
+  console.log(id);
   await deleteCodeApi(id);
   dispatch({
-    type:  RemoveCode,
+    type: RemoveCode,
     payload: id,
   });
 };
 
-
-
+// --------------------------------------------------------------------------------------------------------------
 
 // for Authentication
 export const googleUserLogin = (data) => {
-  console.log('user data from google', data)
+  console.log("user data from google", data);
   return {
     type: GOOGLE_LOGIN_REQUEST,
     payload: data,
   };
 };
 
+// if login successfull
 export const userLoginrequest = (data, history) => async (dispatch) => {
-  console.log('got data', data)
-  try{
-
-  } catch(error){
-    loginFailure(error)
+  console.log("got data", data);
+  try {
+    dispatch({
+      type: USER_LOGIN_REQUEST,
+      paylaod: data,
+    });
+  } catch (error) {
+    loginFailure(error);
   }
-  dispatch({
-    type: USER_LOGIN_REQUEST,
-    paylaod: data,
-  })
-}
+};
 
+// if loginfails
 export const loginFailure = (message) => {
   return {
     type: LOGIN_FAILURE,
-    paylaod:message,
+    paylaod: message,
   };
 };
 
-export const userRegisterSuccess = (data, history) => async (dispatch) => {
-  console.log('user register in action', data)
-  try{
 
+// if signup is successfull
+export const userRegisterSuccess = (data, history) => async (dispatch) => {
+  console.log("user register in action", data);
+  try {
     dispatch({
       type: SIGNUP_SUCCESS,
       paylaod: data,
-    })
-  } catch(error){
-    loginFailure(error)
+    });
+  } catch (error) {
+    userRegisterFail(error);
   }
-}
+};
 
+// if signup fails
 export const userRegisterFail = (message) => {
   return {
     type: SIGNUP_FAILURE,
     paylaod: message,
-  }
-}
+  };
+};
 
+// for check localstorage
 export const verifyStorage = () => {
   return {
     type: VERIFY_LOCAL_STORAGE,
   };
 };
 
+
+// for logout
 export const logOut = () => {
   return {
     type: LOGOUT_SUCCESS,
