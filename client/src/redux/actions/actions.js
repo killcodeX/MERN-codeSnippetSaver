@@ -41,7 +41,7 @@ export const addNewCode = (data) => async (dispatch) => {
   //console.log('data received', data)
   dispatch({
     type: AddSingleCode,
-    payload: data,
+    payload: result,
   });
 };
 

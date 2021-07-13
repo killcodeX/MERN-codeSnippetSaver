@@ -43,7 +43,7 @@ export default function AddNew() {
     },
     validate: validate,
     onSubmit: (values, { resetForm }) => {
-      console.log("values -->", values);
+      //console.log("values -->", values);
       handleClose();
       dispatch(addNewCode(values))
       resetForm({ values: "" });

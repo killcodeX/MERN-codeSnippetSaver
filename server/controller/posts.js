@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 export const getPost = async (req, res) => {
   try {
     const postMessages = await PostMessage.find();
-    //console.log(postMessages);
     res.status(200).json(postMessages);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -64,7 +63,6 @@ export const getLanguage = async (req, res) => {
       result = await PostMessage.find();
     } else{
       result = await PostMessage.find({language : language});
-      console.log('from filter -->', result)
     }
     res.status(200).json(result);
   } catch(error){
