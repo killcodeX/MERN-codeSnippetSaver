@@ -23,6 +23,7 @@ import {
   sendSingleCodeApi,
   editCodeApi,
   deleteCodeApi,
+  filterLangApi,
 } from "../../api";
 
 // actions
@@ -52,12 +53,12 @@ export const editCode = (id, data) => async (dispatch) => {
   });
 };
 
-export const filterLanguage = (lang) => {
-  //console.log('from action', lang)
-  return {
+export const filterLanguage = (lang) => async (dispatch) => {
+  const result = await filterLangApi(lang);
+  dispatch({
     type: FilterLanguage,
-    payload: lang,
-  };
+    payload: result,
+  });
 };
 
 export const themeChange = () => {
@@ -76,8 +77,8 @@ export const filterSearch = (data) => {
 export const stopSearchFilter = () => {
   return {
     type: CancelSearch,
-  }
-}
+  };
+};
 
 export const removeCode = (id) => async (dispatch) => {
   console.log(id);
@@ -120,7 +121,6 @@ export const loginFailure = (message) => {
   };
 };
 
-
 // if signup is successfull
 export const userRegisterSuccess = (data, history) => async (dispatch) => {
   console.log("user register in action", data);
@@ -148,7 +148,6 @@ export const verifyStorage = () => {
     type: VERIFY_LOCAL_STORAGE,
   };
 };
-
 
 // for logout
 export const logOut = () => {

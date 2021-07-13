@@ -6,7 +6,7 @@ import {
   RemoveCode,
   ThemeChange,
   EditCode,
-  CancelSearch
+  CancelSearch,
 } from "../actions/actionConstant";
 
 const initialState = {
@@ -36,23 +36,22 @@ const ProductReducer = (state = initialState, action) => {
       };
 
     case FilterLanguage:
-      let allData = [...state.Codes];
-      console.log(action.payload)
-      if (action.payload == "All Languages") {
-        console.log()
+      // let allData = [...state.Codes];
+      // console.log(action.payload);
+      // if (action.payload == "All Languages") {
+      //   console.log();
+      //   return {
+      //     ...state,
+      //     Codes: allData,
+      //   };
+      // } else {
+      //   const filterCode = state.Codes.filter(
+      //     (item) => item.language.toLowerCase() == action.payload.toLowerCase()
+      //   );
         return {
           ...state,
-          Codes: allData,
+          Codes: [...action.payload],
         };
-      } else {
-        const filterCode = state.Codes.filter(
-          (item) => item.language.toLowerCase() == action.payload.toLowerCase()
-        );
-        return {
-          ...state,
-          Codes: filterCode,
-        };
-      }
 
     case EditCode:
       const editedCode = state.Codes.map((item) =>
@@ -64,12 +63,18 @@ const ProductReducer = (state = initialState, action) => {
       };
 
     case FilterSearch:
-      console.log("received search query", action.payload);
+      //console.log("received search query", action.payload);
       //console.log(state.Codes)
       const result = state.Codes.filter((val) =>
         val.title.toLowerCase().includes(action.payload.toLowerCase())
       );
-      if (result.length < 1) alert("There is not title with that word !!");
+      if (result.length < 1) {
+        alert("There is not title with that word !!");
+        return {
+          ...state,
+          Codes: state.copyCodes,
+        };
+      }
       return {
         ...state,
         Codes: result,
@@ -78,8 +83,8 @@ const ProductReducer = (state = initialState, action) => {
     case CancelSearch:
       return {
         ...state,
-        Codes: [...state.copyCodes]
-      }
+        Codes: [...state.copyCodes],
+      };
 
     case ThemeChange:
       return {
@@ -88,11 +93,13 @@ const ProductReducer = (state = initialState, action) => {
       };
 
     case RemoveCode:
-      let removeResult = state.Codes.filter(code => code._id != action.payload)
-      console.log(removeResult)
+      let removeResult = state.Codes.filter(
+        (code) => code._id != action.payload
+      );
+      console.log(removeResult);
       return {
         ...state,
-        Codes: removeResult
+        Codes: removeResult,
       };
 
     default:
