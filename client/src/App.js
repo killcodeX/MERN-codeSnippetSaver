@@ -6,19 +6,28 @@ import { lightTheme, darkTheme } from "./layout/theme";
 import { Home, Login, Register } from "./components";
 import { useSelector, useDispatch } from "react-redux";
 import { Switch, Route, useHistory } from "react-router-dom";
-import { verifyStorage } from "./redux/actions/actions";
+import { verifyStorage, logOut } from "./redux/actions/actions";
+import decode from 'jwt-decode';
 
 function App() {
   let history = useHistory();
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.Codes.theme);
   const isAuthenticated = useSelector((state) => state.Auth.isAuthenticated);
+  const token = localStorage.getItem('userToken')
   useEffect(() => {
     dispatch(verifyStorage());
     if (!isAuthenticated) {
       history.push("/login");
     } else{
       history.push('/')
+    }
+
+    if(token){
+      const decodedToken = decode(token)
+      if(decodedToken.exp * 1000 < new Date().getTime()){
+        dispatch(logOut())
+      }
     }
   }, [isAuthenticated]);
   return (

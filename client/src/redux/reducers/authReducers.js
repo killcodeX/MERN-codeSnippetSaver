@@ -40,6 +40,7 @@ const AuthReducer = (state = initialState, action) => {
       console.log("from reducers login request -->", action);
       saveState("userLoggedIn", true);
       saveState("backUser", action.payload.result);
+      saveState('userToken', action.payload.token)
       return {
         ...state,
         isAuthenticated: true,
@@ -59,6 +60,7 @@ const AuthReducer = (state = initialState, action) => {
     case SIGNUP_SUCCESS:
       saveState("userLoggedIn", true);
       saveState("backUser", action.payload.result);
+      saveState('userToken', action.payload.token)
       return {
         ...state,
         isAuthenticated: true,
@@ -80,11 +82,15 @@ const AuthReducer = (state = initialState, action) => {
       saveState("googleUser", {});
       saveState("userLoggedIn", false);
       saveState("backUser", {});
+      saveState('userToken','')
       return {
         ...state,
         isLoggingOut: false,
         isAuthenticated: false,
         googleUser: {},
+        googleToken: "",
+        user:{},
+        userToken:''
       };
     case LOGOUT_FAILURE:
       alert(action.message);
@@ -101,6 +107,7 @@ const AuthReducer = (state = initialState, action) => {
       const googleUser = loadState("googleUser");
       const userAuth = loadState("userLoggedIn");
       const backUser = loadState("backUser");
+      const useToken = loadState('userToken')
       return {
         ...state,
         isLoggingIn: false,
@@ -108,6 +115,7 @@ const AuthReducer = (state = initialState, action) => {
         loginError: true,
         googleUser: googleUser,
         user: backUser,
+        userToken:useToken
       };
 
     default:
