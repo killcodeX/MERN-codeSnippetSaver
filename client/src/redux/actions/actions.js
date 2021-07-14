@@ -24,6 +24,8 @@ import {
   editCodeApi,
   deleteCodeApi,
   filterLangApi,
+  signInApi,
+  signUpApi
 } from "../../api";
 
 // actions
@@ -102,12 +104,14 @@ export const googleUserLogin = (data) => {
 
 // if login successfull
 export const userLoginrequest = (data, history) => async (dispatch) => {
-  console.log("got data", data);
+  const result  = await signInApi(data)
+  console.log('form signin ==>',result)
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
-      paylaod: data,
+      payload: result,
     });
+    history.push('/')
   } catch (error) {
     loginFailure(error);
   }
@@ -117,18 +121,19 @@ export const userLoginrequest = (data, history) => async (dispatch) => {
 export const loginFailure = (message) => {
   return {
     type: LOGIN_FAILURE,
-    paylaod: message,
+    payload: message,
   };
 };
 
 // if signup is successfull
 export const userRegisterSuccess = (data, history) => async (dispatch) => {
-  console.log("user register in action", data);
+  const result = await signUpApi(data);
   try {
     dispatch({
       type: SIGNUP_SUCCESS,
-      paylaod: data,
+      payload: result,
     });
+    history.push('/')
   } catch (error) {
     userRegisterFail(error);
   }
@@ -138,7 +143,7 @@ export const userRegisterSuccess = (data, history) => async (dispatch) => {
 export const userRegisterFail = (message) => {
   return {
     type: SIGNUP_FAILURE,
-    paylaod: message,
+    payload: message,
   };
 };
 

@@ -20,13 +20,13 @@ const initialState = {
   googleUser: {},
   googleToken: "",
   user: {},
+  userToken: "",
 };
 
 // Reducers
 const AuthReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOOGLE_LOGIN_REQUEST:
-        console.log(' from reducer',action.payload.result)
       saveState("googleLoggedIn", true);
       saveState("googleUser", action.payload.result);
       return {
@@ -36,15 +36,17 @@ const AuthReducer = (state = initialState, action) => {
         googleUser: action.payload.result,
         googleToken: action.payload.token,
       };
-    // case LOGIN_SUCCESS:
-    //   saveState("firebaseLoggedIn", true);
-    //   saveState("firebaseUser", action.user);
-    //   return {
-    //     ...state,
-    //     isLoggingIn: false,
-    //     isAuthenticated: true,
-    //     user: action.user,
-    //   };
+    case USER_LOGIN_REQUEST:
+      console.log("from reducers login request -->", action);
+      saveState("userLoggedIn", true);
+      saveState("backUser", action.payload.result);
+      return {
+        ...state,
+        isAuthenticated: true,
+        loginError: false,
+        user: action.payload.result,
+        userToken: action.payload.token,
+      };
     case LOGIN_FAILURE:
       alert(action.message);
       return {
@@ -54,21 +56,15 @@ const AuthReducer = (state = initialState, action) => {
         loginError: true,
         errorMessage: action.message,
       };
-
-    // case SIGNUP_REQUEST:
-    //   return {
-    //     ...state,
-    //     isSignUp: true,
-    //     SignUpError: false,
-    //   };
     case SIGNUP_SUCCESS:
-      saveState("firebaseLoggedIn", true);
-      saveState("firebaseUser", action.user);
+      saveState("userLoggedIn", true);
+      saveState("backUser", action.payload.result);
       return {
         ...state,
-        isSignUp: false,
         isAuthenticated: true,
-        user: action.user,
+        SignUpError: false,
+        user: action.payload.result,
+        userToken: action.payload.token,
       };
     case SIGNUP_FAILURE:
       alert(action.message);
@@ -79,15 +75,11 @@ const AuthReducer = (state = initialState, action) => {
         SignUpError: true,
         errorMessage: action.message,
       };
-    // case LOGOUT_REQUEST:
-    //   return {
-    //     ...state,
-    //     isLoggingOut: true,
-    //     loginError: false,
-    //   };
     case LOGOUT_SUCCESS:
       saveState("googleLoggedIn", false);
       saveState("googleUser", {});
+      saveState("userLoggedIn", false);
+      saveState("backUser", {});
       return {
         ...state,
         isLoggingOut: false,
@@ -105,14 +97,17 @@ const AuthReducer = (state = initialState, action) => {
       };
 
     case VERIFY_LOCAL_STORAGE:
-      const auth = loadState("googleLoggedIn");
+      const googleAuth = loadState("googleLoggedIn");
       const googleUser = loadState("googleUser");
+      const userAuth = loadState("userLoggedIn");
+      const backUser = loadState("backUser");
       return {
         ...state,
         isLoggingIn: false,
-        isAuthenticated: auth,
+        isAuthenticated: googleAuth || userAuth,
         loginError: true,
         googleUser: googleUser,
+        user: backUser,
       };
 
     default:

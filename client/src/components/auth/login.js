@@ -4,7 +4,11 @@ import { useFormik } from "formik";
 import { Link, useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { LoginCard, AuthBody } from "../../layout/theme";
-import { googleUserLogin, loginFailure, userLoginrequest } from "../../redux/actions/actions";
+import {
+  googleUserLogin,
+  loginFailure,
+  userLoginrequest,
+} from "../../redux/actions/actions";
 import { useDispatch } from "react-redux";
 
 export default function Login() {
@@ -23,11 +27,12 @@ export default function Login() {
 
     if (!values.password) {
       errors.password = "Required";
-    } else if (values.password.length < 8) {
-      errors.password = "Password must be 8 characters long.";
-    } else if (!passwordRegex.test(values.password)) {
-      errors.password = "Invalid password. Must contain one number.";
     }
+    // } else if (values.password.length < 8) {
+    //   errors.password = "Password must be 8 characters long.";
+    // } else if (!passwordRegex.test(values.password)) {
+    //   errors.password = "Invalid password. Must contain one number.";
+    // }
 
     return errors;
   };
@@ -39,7 +44,7 @@ export default function Login() {
     },
     validate: validate,
     onSubmit: (values, { resetForm }) => {
-      dispatch(userLoginrequest(values, history))
+      dispatch(userLoginrequest(values, history));
       resetForm({ values: "" });
     },
   });
@@ -48,16 +53,18 @@ export default function Login() {
     const result = await res?.profileObj;
     const token = await res?.tokenId;
     try {
-      dispatch(googleUserLogin({result, token}));
+      dispatch(googleUserLogin({ result, token }));
     } catch (error) {
       console.log(error);
-      dispatch(loginFailure('Login Failed'))
+      dispatch(loginFailure("Login Failed"));
     }
   };
 
   const googleFailure = () => {
     console.log("Google Sign In was unsuccessful... Try Again later !!");
-    dispatch(loginFailure("Google Sign In was unsuccessful... Try Again later !!"))
+    dispatch(
+      loginFailure("Google Sign In was unsuccessful... Try Again later !!")
+    );
   };
 
   return (

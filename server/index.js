@@ -13,7 +13,7 @@ app.use(cors())
 
 // sholud be called after initializing cors to avoid cors origin issue
 app.use('/posts', postRoutes);
-app.use('/user', userRoutes);
+app.use('/users', userRoutes);
 
 // for database
 
